@@ -1,5 +1,6 @@
+'use client';
+
 import CheckBox from '@/components/ui/ChechBox';
-import { memo } from 'react';
 
 import { tableWidth } from '@/components/constant/table';
 import Filter from '@/components/ui/filter/Filter';
@@ -18,7 +19,9 @@ const TableHeader = function () {
         {/* 전체 체크박스 */}
         <th scope="col" className={`${tableWidth[0]} ${tableBorder} px-[8px]`}>
           <CheckBox
-            checked={!members.find(member => !member.checked)}
+            checked={
+              !!members.length && !members.find(member => !member.checked)
+            }
             onChange={toggleAllMember}
           />
         </th>
