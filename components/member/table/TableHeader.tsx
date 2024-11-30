@@ -10,14 +10,17 @@ import { DEFAULT_COLS } from '@/components/constant/value';
 
 // 변화가 없기에 memoization
 const TableHeader = function () {
-  const { filterMap, members, toggleFilter, addFilter, removeFilter } =
+  const { filterMap, members, addFilter, removeFilter, toggleAllMember } =
     useMember();
   return (
     <thead>
       <tr className={`flex flex-row w-full`}>
         {/* 전체 체크박스 */}
         <th scope="col" className={`${tableWidth[0]} ${tableBorder} px-[8px]`}>
-          <CheckBox />
+          <CheckBox
+            checked={!members.find(member => !member.checked)}
+            onChange={toggleAllMember}
+          />
         </th>
         {DEFAULT_COLS.map((col, idx) => {
           const filterMenus: FilterValue[] = Array.from(
@@ -36,10 +39,8 @@ const TableHeader = function () {
               desc,
               onClick: () => {
                 if (filter.has(menu)) {
-                  console.log('제거 실행');
                   removeFilter(col.filterKey, menu);
                 } else {
-                  console.log('추가 실행');
                   addFilter(col.filterKey, menu);
                 }
               },

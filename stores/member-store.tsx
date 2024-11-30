@@ -16,6 +16,7 @@ type MemberAction = {
   removeMember: (idx: number) => void;
   addMember: (member: MemberRecord) => void;
   checkMember: (idx: number) => void;
+  toggleAllMember: () => void;
   checkEmailMember: (idx: number) => void;
 
   addFilter: (key: FilterKey, value: FilterValue) => void;
@@ -68,6 +69,16 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
     });
   };
 
+  const toggleAllMember = function () {
+    const hasNotChecked = !members.find(member => !member.checked);
+    setMembers(prev =>
+      prev.map(member => ({
+        ...member,
+        checked: hasNotChecked ? false : true,
+      })),
+    );
+  };
+
   // ID가 없기에 index로 변경
   const checkEmailMember = function (idx: number) {
     setMembers(prev => {
@@ -91,6 +102,7 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
         addMember,
         removeMember,
         checkMember,
+        toggleAllMember,
         checkEmailMember,
         addFilter,
         removeFilter,
