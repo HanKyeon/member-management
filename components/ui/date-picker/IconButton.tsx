@@ -9,6 +9,7 @@ interface Props {
 const IconButton = function ({ className = '', children, onClick }: Props) {
   return (
     <Button
+      type="button"
       className={`flex-shrink-0 w-[16px] h-[16px] flex items-center justify-center !p-0 ${className}`}
       onClick={e => {
         e.preventDefault();

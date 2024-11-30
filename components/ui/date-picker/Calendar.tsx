@@ -102,6 +102,7 @@ const Calendar = ({
           return (
             <button
               key={index}
+              type="button"
               className={`${textBaseNormal} ${borderRadiusButton} h-[30px] w-1/7 mh-[3px] mx-[5px] cursor-pointer duration-200 border-[1px] ${current ? 'text-recatch-text' : 'text-recatch-text-disabled'} ${
                 isToday
                   ? 'border-recatch-primary' // 오늘 날짜 스타일
