@@ -2,7 +2,7 @@
 
 import { tableBorder, textBaseStrong } from '@/components/constant/style';
 import FilterIcon from '@/public/icons/Filter.svg';
-import { ContextMenu } from './ContextMenu';
+import { FilterMenu } from './FilterMenu';
 import { memo, useEffect, useRef } from 'react';
 import Dim from '../Dim';
 import { useOverlay } from '@/hooks/useOverlay';
@@ -50,7 +50,7 @@ const Filter = memo(function ({ title, className, menus }: Props) {
           <FilterIcon />
         </div>
       </div>
-      <ContextMenu
+      <FilterMenu
         className={`absolute top-[110%] left-0 duration-200 ${open ? 'scale-100 opacity-100 z-[700]' : 'scale-90 opacity-0 pointer-events-none z-[-200]'}`}
         menus={menus}
       />
