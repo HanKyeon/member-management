@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 import TerserPlugin from 'terser-webpack-plugin';
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
           ]
         : [],
     };
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
     return config;
   },
 };
