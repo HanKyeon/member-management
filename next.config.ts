@@ -1,5 +1,6 @@
-import type { NextConfig } from 'next';
 import TerserPlugin from 'terser-webpack-plugin';
+
+import type { NextConfig } from 'next';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const nextConfig: NextConfig = {

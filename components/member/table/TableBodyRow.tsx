@@ -4,9 +4,10 @@ import { textBaseNormal } from '@/components/constant/style';
 import { tableWidth } from '@/components/constant/table';
 import { DEFAULT_COLS } from '@/components/constant/value';
 import CheckBox from '@/components/ui/ChechBox';
-import { MemberRecord } from '@/types/type';
-import MoreButton from './MoreButton';
 import { useMember } from '@/stores/member-store';
+import type { MemberRecord } from '@/types/type';
+
+import MoreButton from './MoreButton';
 
 interface Props {
   member: MemberRecord;

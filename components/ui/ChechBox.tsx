@@ -1,6 +1,6 @@
-import { InputHTMLAttributes } from 'react';
-
 import Check from '@/public/icons/Check.svg';
+
+import type { InputHTMLAttributes } from 'react';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;

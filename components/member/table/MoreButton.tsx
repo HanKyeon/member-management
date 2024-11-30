@@ -8,7 +8,7 @@ import Button from '@/components/ui/Button';
 import Dim from '@/components/ui/Dim';
 import { useOverlay } from '@/hooks/useOverlay';
 import { useMember } from '@/stores/member-store';
-import { MemberRecord } from '@/types/type';
+import type { MemberRecord } from '@/types/type';
 
 interface Props {
   member: MemberRecord;

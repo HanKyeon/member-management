@@ -1,5 +1,6 @@
-import { LabelHTMLAttributes } from 'react';
 import { textLgNormal, textLgStrong } from '../constant/style';
+
+import type { LabelHTMLAttributes } from 'react';
 
 interface Props extends LabelHTMLAttributes<HTMLLabelElement> {
   text?: string;

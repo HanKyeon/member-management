@@ -1,5 +1,5 @@
-import { FilterKey } from '@/hooks/useFilterMap';
-import { Job, MemberRecord } from '@/types/type';
+import { type FilterKey } from '@/hooks/useFilterMap';
+import { type Job, type MemberRecord } from '@/types/type';
 
 export const DEFAULT_COLS: {
   name: string;

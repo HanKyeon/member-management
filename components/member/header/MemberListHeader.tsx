@@ -1,6 +1,5 @@
 import { heading5 } from '@/components/constant/style';
 import ConfirmButton from '@/components/ui/ConfirmButton';
-
 import Plus from '@/public/icons/Plus.svg';
 
 interface Props {

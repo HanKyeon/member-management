@@ -1,6 +1,8 @@
 import MoreIcon from '@/public/icons/MoreOutlined.svg';
+
 import { borderRadiusButton, paddingSX } from '../constant/style';
-import { ButtonHTMLAttributes } from 'react';
+
+import type { ButtonHTMLAttributes } from 'react';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;

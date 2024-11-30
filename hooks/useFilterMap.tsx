@@ -1,5 +1,6 @@
-import { DefaultMemberRecord } from '@/types/type';
 import { useState } from 'react';
+
+import type { DefaultMemberRecord } from '@/types/type';
 
 export type Filters = DefaultMemberRecord;
 

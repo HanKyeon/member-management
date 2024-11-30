@@ -1,13 +1,12 @@
 'use client';
 
-import CheckBox from '@/components/ui/ChechBox';
-
-import { tableWidth } from '@/components/constant/table';
-import Filter from '@/components/ui/filter/Filter';
 import { tableBorder } from '@/components/constant/style';
-import { useMember } from '@/stores/member-store';
-import { FilterKey, FilterValue } from '@/hooks/useFilterMap';
+import { tableWidth } from '@/components/constant/table';
 import { DEFAULT_COLS } from '@/components/constant/value';
+import CheckBox from '@/components/ui/ChechBox';
+import Filter from '@/components/ui/filter/Filter';
+import type { FilterValue } from '@/hooks/useFilterMap';
+import { useMember } from '@/stores/member-store';
 
 // 변화가 없기에 memoization
 const TableHeader = function () {

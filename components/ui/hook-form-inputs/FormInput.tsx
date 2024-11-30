@@ -1,8 +1,9 @@
 'use client';
 
+import { useController, useFormContext } from 'react-hook-form';
+
 import Input from '@/components/ui/Input';
 import Label from '@/components/ui/Label';
-import { useController, useFormContext } from 'react-hook-form';
 
 interface Props {
   label: string;

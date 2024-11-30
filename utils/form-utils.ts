@@ -1,4 +1,4 @@
-import { MemberRecord } from '@/types/type';
+import type { MemberRecord } from '@/types/type';
 
 export const MemberFormResolver = (data: MemberRecord) => {
   const errors: Record<string, { type?: string; message: string }> = {};

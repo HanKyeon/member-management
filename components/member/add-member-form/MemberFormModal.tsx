@@ -1,8 +1,9 @@
-import Overlay from '@/components/ui/Overlay';
-import MemberForm from './MemberForm';
 import { borderRadiusLG } from '@/components/constant/style';
+import Overlay from '@/components/ui/Overlay';
+import type { MemberRecord } from '@/types/type';
+
+import MemberForm from './MemberForm';
 import ModalHeader from './ModalHeader';
-import { MemberRecord } from '@/types/type';
 
 interface Props {
   open: boolean;

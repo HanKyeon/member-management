@@ -1,14 +1,16 @@
-import { DEFAULT_COLS, DEFAULT_JOBS } from '@/components/constant/value';
-import { MemberRecord } from '@/types/type';
 import { createElement } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import FormInput from '../../ui/hook-form-inputs/FormInput';
-import FormTextArea from '@/components/ui/hook-form-inputs/FormTextArea';
+
+import { DEFAULT_COLS, DEFAULT_JOBS } from '@/components/constant/value';
+import FormCheckBox from '@/components/ui/hook-form-inputs/FormCheck';
 import FormDate from '@/components/ui/hook-form-inputs/FormDatePicker';
 import FormSelect from '@/components/ui/hook-form-inputs/FormSelect';
+import FormTextArea from '@/components/ui/hook-form-inputs/FormTextArea';
+import { type MemberRecord } from '@/types/type';
 import { formatDate } from '@/utils/date-utils';
-import FormCheckBox from '@/components/ui/hook-form-inputs/FormCheck';
 import { MemberFormResolver } from '@/utils/form-utils';
+
+import FormInput from '../../ui/hook-form-inputs/FormInput';
 import ModalFooter from './ModalFooter';
 
 interface Props {

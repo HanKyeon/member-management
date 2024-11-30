@@ -1,8 +1,9 @@
 'use client';
 
 import { useMember } from '@/stores/member-store';
+import { type MemberRecord } from '@/types/type';
+
 import TableBodyRow from './TableBodyRow';
-import { MemberRecord } from '@/types/type';
 
 interface Props {
   editFormOpenHandler: (target?: MemberRecord) => void;

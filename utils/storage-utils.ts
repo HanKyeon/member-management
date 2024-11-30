@@ -1,4 +1,4 @@
-import { MemberRecord } from '@/types/type';
+import type { MemberRecord } from '@/types/type';
 
 const isPersist = process.env.NEXT_PUBLIC_STORAGE === 'local-storage';
 

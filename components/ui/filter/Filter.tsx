@@ -1,10 +1,12 @@
 'use client';
 
-import { tableBorder, textBaseStrong } from '@/components/constant/style';
-import FilterIcon from '@/public/icons/Filter.svg';
-import { FilterMenu } from './FilterMenu';
 import { memo, useEffect, useRef } from 'react';
+
+import { tableBorder, textBaseStrong } from '@/components/constant/style';
 import { useOverlay } from '@/hooks/useOverlay';
+import FilterIcon from '@/public/icons/Filter.svg';
+
+import { FilterMenu } from './FilterMenu';
 
 interface Props {
   title: string;

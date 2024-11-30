@@ -1,11 +1,12 @@
 'use client';
 
-import { ButtonHTMLAttributes } from 'react';
 import {
   borderRadiusButton,
   paddingSM,
   textBaseNormal,
 } from '../constant/style';
+
+import type { ButtonHTMLAttributes } from 'react';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;

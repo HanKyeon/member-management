@@ -1,4 +1,4 @@
-import { MemberRecord } from '@/types/type';
+import type { MemberRecord } from '@/types/type';
 
 /**
  * 두 멤버 비교 후 같은지 반환

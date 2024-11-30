@@ -1,4 +1,5 @@
 import { type InputHTMLAttributes } from 'react';
+
 import { borderRadiusButton, textBaseNormal } from '../constant/style';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {

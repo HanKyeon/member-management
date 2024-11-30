@@ -1,7 +1,9 @@
 'use client';
 
-import Label from '@/components/ui/Label';
 import { useController, useFormContext } from 'react-hook-form';
+
+import Label from '@/components/ui/Label';
+
 import CheckBox from '../ChechBox';
 
 interface Props {

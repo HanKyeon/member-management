@@ -1,5 +1,4 @@
 import { textBaseStrong } from '@/components/constant/style';
-
 import Close from '@/public/icons/Close.svg';
 
 interface Props {

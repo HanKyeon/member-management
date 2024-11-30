@@ -1,13 +1,14 @@
 'use client';
 
+import { useCallback } from 'react';
+
 import { useOverlay } from '@/hooks/useOverlay';
-import MemberListHeader from './header/MemberListHeader';
-import MemberTable from './table/MemberTable';
 import { MemberProvider, useMember } from '@/stores/member-store';
+import type { MemberRecord } from '@/types/type';
 
 import MemberFormModal from './add-member-form/MemberFormModal';
-import { useCallback } from 'react';
-import { MemberRecord } from '@/types/type';
+import MemberListHeader from './header/MemberListHeader';
+import MemberTable from './table/MemberTable';
 
 const Member = function () {
   const { open, openHandler, closeHandler } = useOverlay();
