@@ -3,19 +3,13 @@
 import { textBaseNormal } from '@/components/constant/style';
 import { tableWidth } from '@/components/constant/table';
 import { DEFAULT_COLS } from '@/components/constant/value';
-import CheckBox from '@/components/ui/ChechBox';
+import CheckBox from '@/components/ui/CheckBox';
 import { useMember } from '@/stores/member-store';
-import type { MemberRecord } from '@/types/type';
 
+import { RowProps } from '../../../types/table-types';
 import MoreButton from './MoreButton';
 
-interface Props {
-  member: MemberRecord;
-  editFormOpenHandler: (target?: MemberRecord) => void;
-  idx: number;
-}
-
-const TableBodyRow = function ({ member, editFormOpenHandler, idx }: Props) {
+const TableBodyRow = function ({ member, editFormOpenHandler, idx }: RowProps) {
   const { checkMember, checkEmailMember } = useMember();
   return (
     <tr

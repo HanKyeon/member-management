@@ -1,15 +1,10 @@
 'use client';
 
-import type { MemberRecord } from '@/types/type';
-
+import { TableProps } from '../../../types/table-types';
 import TableBody from './TableBody';
 import TableHeader from './TableHeader';
 
-interface Props {
-  editFormOpenHandler: (target?: MemberRecord) => void;
-}
-
-const MemberTable = function ({ editFormOpenHandler }: Props) {
+const MemberTable = function ({ editFormOpenHandler }: TableProps) {
   return (
     <table className="table-auto w-full border-collapse border border-gray-200">
       <TableHeader />

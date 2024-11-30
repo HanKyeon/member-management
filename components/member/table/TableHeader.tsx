@@ -3,7 +3,7 @@
 import { tableBorder } from '@/components/constant/style';
 import { tableWidth } from '@/components/constant/table';
 import { DEFAULT_COLS } from '@/components/constant/value';
-import CheckBox from '@/components/ui/ChechBox';
+import CheckBox from '@/components/ui/CheckBox';
 import Filter from '@/components/ui/filter/Filter';
 import type { FilterValue } from '@/hooks/useFilterMap';
 import { useMember } from '@/stores/member-store';
