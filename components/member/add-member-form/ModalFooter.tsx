@@ -1,18 +1,15 @@
-import CancelButton from '@/components/ui/CancelButton';
-import ConfirmButton from '@/components/ui/ConfirmButton';
+import Button from '@/components/ui/Button';
 import { useFormContext } from 'react-hook-form';
+import { CommonModalFormProps } from '../../../types/modal-types';
 
-interface Props {
-  cancelHandler: () => void;
-}
-
-const ModalFooter = function ({ cancelHandler }: Props) {
+const ModalFooter = function ({ cancelHandler }: CommonModalFormProps) {
   const {
     formState: { isValid },
   } = useFormContext();
   return (
     <footer className="w-full py-[12px] px-[16px] flex flex-row items-center justify-end gap-[10px] border-t-[1px] border-recatch-split bg-recatch-fill-alter">
-      <CancelButton
+      <Button
+        variant="cancel"
         type="button"
         className="px-[16px] py-[5px]"
         onClick={e => {
@@ -21,14 +18,15 @@ const ModalFooter = function ({ cancelHandler }: Props) {
         }}
       >
         취소
-      </CancelButton>
-      <ConfirmButton
+      </Button>
+      <Button
+        variant="confirm"
         type="submit"
         className="px-[16px] py-[5px]"
         disabled={!isValid}
       >
         저장
-      </ConfirmButton>
+      </Button>
     </footer>
   );
 };

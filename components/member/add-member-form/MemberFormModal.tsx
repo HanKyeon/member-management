@@ -1,33 +1,29 @@
 import { borderRadiusLG } from '@/components/constant/style';
 import Overlay from '@/components/ui/Overlay';
-import type { MemberRecord } from '@/types/type';
 
+import { ModalContainerProps } from '../../../types/modal-types';
 import MemberForm from './MemberForm';
 import ModalHeader from './ModalHeader';
 
-interface Props {
-  open: boolean;
-  closeHandler: () => void;
-  onSubmit: (member: MemberRecord) => void;
-  member?: MemberRecord;
-}
-
 const MemberFormModal = function ({
-  closeHandler,
+  cancelHandler,
   open,
   onSubmit,
-  member,
-}: Props) {
+  target,
+}: ModalContainerProps) {
   return (
-    <Overlay isOpen={open} onClose={closeHandler}>
+    <Overlay variant="modal" isOpen={open} onClose={cancelHandler}>
       <main
         className={`${borderRadiusLG} w-[520px] bg-recatch-text-light-solid`}
       >
-        <ModalHeader closeHandler={closeHandler} isEdit={!!member} />
+        <ModalHeader
+          cancelHandler={cancelHandler}
+          title={target ? '회원 수정' : '회원 추가'}
+        />
         <MemberForm
           onSubmit={onSubmit}
-          member={member}
-          cancelHandler={closeHandler}
+          target={target}
+          cancelHandler={cancelHandler}
         />
       </main>
     </Overlay>

@@ -10,14 +10,9 @@ import { type MemberRecord } from '@/types/type';
 import { formatDate } from '@/utils/date-utils';
 import { MemberFormResolver } from '@/utils/form-utils';
 
+import { ModalFormProps } from '../../../types/modal-types';
 import FormInput from '../../ui/hook-form-inputs/FormInput';
 import ModalFooter from './ModalFooter';
-
-interface Props {
-  onSubmit: (member: MemberRecord) => void;
-  member?: MemberRecord;
-  cancelHandler: () => void;
-}
 
 const ElementMap = {
   name: FormInput,
@@ -28,19 +23,20 @@ const ElementMap = {
   emailAgreement: FormCheckBox,
 };
 
-/**
- * @param {React.ReactNode} children footer로 사용됩니다.
- */
-const MemberForm = function ({ onSubmit, member, cancelHandler }: Props) {
+const MemberForm = function ({
+  onSubmit,
+  target,
+  cancelHandler,
+}: ModalFormProps) {
   const methods = useForm<MemberRecord>({
     defaultValues: {
-      checked: member?.checked ?? false,
-      name: member?.name ?? '',
-      address: member?.address ?? '',
-      memo: member?.memo ?? '',
-      joinDate: member?.joinDate ?? formatDate(new Date()),
-      job: member?.job ?? DEFAULT_JOBS[0].value,
-      emailAgreement: member?.emailAgreement ?? false,
+      checked: target?.checked ?? false,
+      name: target?.name ?? '',
+      address: target?.address ?? '',
+      memo: target?.memo ?? '',
+      joinDate: target?.joinDate ?? formatDate(new Date()),
+      job: target?.job ?? DEFAULT_JOBS[0].value,
+      emailAgreement: target?.emailAgreement ?? false,
     },
     resolver: MemberFormResolver,
   });
