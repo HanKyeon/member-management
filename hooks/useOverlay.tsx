@@ -8,5 +8,8 @@ export const useOverlay = function () {
   const closeHandler = function () {
     setOpen(false);
   };
-  return { open, openHandler, closeHandler };
+  const toggleHandler = function () {
+    setOpen(prev => !prev);
+  };
+  return { open, openHandler, closeHandler, toggleHandler };
 };
