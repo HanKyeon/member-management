@@ -1,5 +1,5 @@
 import { FilterKey } from '@/hooks/useFilterMap';
-import { MemberRecord } from '@/types/type';
+import { Job, MemberRecord } from '@/types/type';
 
 export const DEFAULT_COLS: {
   name: string;
@@ -32,4 +32,13 @@ export const DEFAULT_DATA: MemberRecord[] = [
     job: 'PO',
     emailAgreement: false,
   },
+];
+
+export const DEFAULT_JOBS: {
+  desc: string;
+  value: Job;
+}[] = [
+  { desc: '개발자', value: '개발자' },
+  { desc: 'PO', value: 'PO' },
+  { desc: '디자이너', value: '디자이너' },
 ];

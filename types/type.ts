@@ -1,3 +1,5 @@
+export type Job = '개발자' | 'PO' | '디자이너';
+
 export interface DefaultMemberRecord {
   /**
    * 이름, required
@@ -18,7 +20,7 @@ export interface DefaultMemberRecord {
   /**
    * 직업, optional
    */
-  job?: '개발자' | 'PO' | '디자이너';
+  job?: Job;
   /**
    * 이메일 수신 동의, optional
    */
