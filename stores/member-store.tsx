@@ -1,7 +1,7 @@
 'use client';
 
 import { DEFAULT_DATA } from '@/components/constant/value';
-import { setRecordsInLocalStorage } from '@/components/utils/storage-utils';
+import { setRecordsInLocalStorage } from '@/utils/storage-utils';
 import { FilterKey, FilterValue, useFilterMap } from '@/hooks/useFilterMap';
 import { MemberRecord } from '@/types/type';
 import {
@@ -11,6 +11,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { isEqual } from '@/utils/member-utils';
 
 type MemberState = {
   members: MemberRecord[];
@@ -19,11 +20,11 @@ type MemberState = {
 };
 
 type MemberAction = {
-  removeMember: (idx: number) => void;
+  removeMember: (target: MemberRecord) => void;
   addMember: (member: MemberRecord) => void;
-  checkMember: (idx: number) => void;
+  checkMember: (target: MemberRecord) => void;
   toggleAllMember: () => void;
-  checkEmailMember: (idx: number) => void;
+  checkEmailMember: (target: MemberRecord) => void;
 
   addFilter: (key: FilterKey, value: FilterValue) => void;
   removeFilter: (key: FilterKey, value: FilterValue) => void;
@@ -39,27 +40,29 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
   const [members, setMembers] = useState<MemberRecord[]>([]);
   const { filterMap, addFilter, removeFilter, toggleFilter } = useFilterMap();
 
-  const addMember = function (member: MemberRecord) {
+  const addMember = function (target: MemberRecord) {
     setMembers(prev => {
-      const newMembers = [...prev, member];
+      const newMembers = [...prev, target];
       setRecordsInLocalStorage(newMembers);
       return newMembers;
     });
   };
 
-  const removeMember = function (idx: number) {
+  const removeMember = function (target: MemberRecord) {
     setMembers(prev => {
-      const newMembers = prev.filter((_, i) => i !== idx);
+      const newMembers = prev.filter((member, i) => isEqual(target, member));
       setRecordsInLocalStorage(newMembers);
       return newMembers;
     });
   };
 
   // ID가 없기에 index로 변경
-  const checkMember = function (idx: number) {
+  const checkMember = function (target: MemberRecord) {
     setMembers(prev => {
-      const newMembers = prev.map((member, i) =>
-        idx === i ? { ...member, checked: !member.checked } : member,
+      const newMembers = prev.map(member =>
+        isEqual(target, member)
+          ? { ...member, checked: !member.checked }
+          : member,
       );
       setRecordsInLocalStorage(newMembers);
       return newMembers;
@@ -77,10 +80,10 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
   };
 
   // ID가 없기에 index로 변경
-  const checkEmailMember = function (idx: number) {
+  const checkEmailMember = function (target: MemberRecord) {
     setMembers(prev => {
-      const newMembers = prev.map((member, i) =>
-        idx === i
+      const newMembers = prev.map(member =>
+        isEqual(target, member)
           ? { ...member, emailAgreement: !member.emailAgreement }
           : member,
       );
