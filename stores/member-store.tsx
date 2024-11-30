@@ -40,7 +40,8 @@ const MemberStore = createContext<Partial<MemberStoreType>>({});
 
 export const MemberProvider = function ({ children }: PropsWithChildren) {
   const isPersist = process.env.NEXT_PUBLIC_STORAGE === 'local-storage';
-  const { filterMap, addFilter, removeFilter, toggleFilter } = useFilterMap();
+  const { filterMap, addFilter, removeFilter, toggleFilter, setFilterMap } =
+    useFilterMap();
   const [members, setMembers] = useState<MemberRecord[]>([]);
   const [target, setTarget] = useState<MemberRecord | undefined>();
 
@@ -60,6 +61,17 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
     setMembers(prev => {
       const newMembers = prev.filter((member, i) => !isEqual(target, member));
       setRecordsInLocalStorage(newMembers);
+
+      // member가 지워졌을 때 유효한 filter인지 확인
+      const updatedFilterMap = new Map(filterMap);
+      updatedFilterMap.forEach((values, key) => {
+        const validValues = Array.from(values).filter(value =>
+          newMembers.some(member => member[key] === value),
+        );
+        updatedFilterMap.set(key, new Set(validValues));
+      });
+      setFilterMap(updatedFilterMap);
+
       return newMembers;
     });
   };

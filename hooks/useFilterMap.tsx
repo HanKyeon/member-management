@@ -66,5 +66,6 @@ export const useFilterMap = function (
     addFilter,
     removeFilter,
     toggleFilter,
+    setFilterMap,
   };
 };
