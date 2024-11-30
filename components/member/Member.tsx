@@ -3,21 +3,38 @@
 import { useOverlay } from '@/hooks/useOverlay';
 import MemberListHeader from './header/MemberListHeader';
 import MemberTable from './table/MemberTable';
-import { MemberProvider } from '@/stores/member-store';
+import { MemberProvider, useMember } from '@/stores/member-store';
 
 import MemberFormModal from './add-member-form/MemberFormModal';
+import { useCallback, useState } from 'react';
+import { MemberRecord } from '@/types/type';
 
 const Member = function () {
   const { open, openHandler, closeHandler } = useOverlay();
+  const { changeMemberDetail, target, updateTargetHandler, addMember } =
+    useMember();
+
+  const editFormOpenHandler = useCallback(function (target?: MemberRecord) {
+    updateTargetHandler(target);
+    openHandler();
+  }, []);
+
   return (
-    <MemberProvider>
+    <>
       <MemberFormModal
         open={open}
         closeHandler={closeHandler}
         onSubmit={data => {
+          if (target) {
+            changeMemberDetail(target, data);
+          } else {
+            addMember(data);
+          }
           console.log(data);
-          // closeHandler();
+          updateTargetHandler();
+          closeHandler();
         }}
+        member={target}
       />
       <section className="w-full h-full flex flex-col flex-shrink-0">
         <MemberListHeader
@@ -26,11 +43,19 @@ const Member = function () {
           buttonClick={openHandler}
         />
         <main className="w-full flex-1">
-          <MemberTable />
+          <MemberTable editFormOpenHandler={editFormOpenHandler} />
         </main>
       </section>
+    </>
+  );
+};
+
+const MemberContainer = function () {
+  return (
+    <MemberProvider>
+      <Member />
     </MemberProvider>
   );
 };
 
-export default Member;
+export default MemberContainer;

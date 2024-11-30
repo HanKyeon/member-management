@@ -12,9 +12,10 @@ import { MemberRecord } from '@/types/type';
 
 interface Props {
   member: MemberRecord;
+  editFormOpenHandler: (target?: MemberRecord) => void;
 }
 
-const MoreButton = function ({ member }: Props) {
+const MoreButton = function ({ member, editFormOpenHandler }: Props) {
   const { removeMember } = useMember();
   const { open, closeHandler, openHandler } = useOverlay();
   return (
@@ -25,7 +26,11 @@ const MoreButton = function ({ member }: Props) {
         className={`${borderRadiusButton} ${textBaseNormal} w-[185px] shadow-calendar-blur p-[4px] flex flex-col bg-recatch-text-light-solid absolute top-[110%] right-1/2 duration-200 ${open ? 'scale-100 opacity-100 z-[700]' : 'scale-90 opacity-0 pointer-events-none z-[-200]'}`}
       >
         <li
-          className={`${textBaseNormal} w-full py-[5px] px-[12px] pb-[9px] border-b-[1px] border-b-recatch-split`}
+          className={`${textBaseNormal} w-full py-[5px] px-[12px] pb-[9px] border-b-[1px] border-b-recatch-split cursor-pointer`}
+          onClick={() => {
+            editFormOpenHandler(member);
+            closeHandler();
+          }}
         >
           수정
         </li>

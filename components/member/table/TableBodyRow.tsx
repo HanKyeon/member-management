@@ -10,9 +10,10 @@ import { useMember } from '@/stores/member-store';
 
 interface Props {
   member: MemberRecord;
+  editFormOpenHandler: (target?: MemberRecord) => void;
 }
 
-const TableBodyRow = function ({ member }: Props) {
+const TableBodyRow = function ({ member, editFormOpenHandler }: Props) {
   const { checkMember, checkEmailMember } = useMember();
   return (
     <tr
@@ -44,7 +45,7 @@ const TableBodyRow = function ({ member }: Props) {
         );
       })}
       <th className={`${tableWidth[7]} py-[13px] px-[8px] relative`}>
-        <MoreButton member={member} />
+        <MoreButton member={member} editFormOpenHandler={editFormOpenHandler} />
       </th>
     </tr>
   );

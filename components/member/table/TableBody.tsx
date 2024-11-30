@@ -2,8 +2,13 @@
 
 import { useMember } from '@/stores/member-store';
 import TableBodyRow from './TableBodyRow';
+import { MemberRecord } from '@/types/type';
 
-const TableBody = function () {
+interface Props {
+  editFormOpenHandler: (target?: MemberRecord) => void;
+}
+
+const TableBody = function ({ editFormOpenHandler }: Props) {
   const { members, filterMap } = useMember();
 
   return (
@@ -18,7 +23,11 @@ const TableBody = function () {
           return true;
         })
         .map((member, idx) => (
-          <TableBodyRow key={`${idx}-${member.name}`} member={member} />
+          <TableBodyRow
+            key={`${idx}-${member.name}`}
+            member={member}
+            editFormOpenHandler={editFormOpenHandler}
+          />
         ))}
     </tbody>
   );
