@@ -12,9 +12,10 @@ import MoreButton from './MoreButton';
 interface Props {
   member: MemberRecord;
   editFormOpenHandler: (target?: MemberRecord) => void;
+  idx: number;
 }
 
-const TableBodyRow = function ({ member, editFormOpenHandler }: Props) {
+const TableBodyRow = function ({ member, editFormOpenHandler, idx }: Props) {
   const { checkMember, checkEmailMember } = useMember();
   return (
     <tr
@@ -32,7 +33,7 @@ const TableBodyRow = function ({ member, editFormOpenHandler }: Props) {
         return (
           <th
             key={`${col.name}-${col.filterKey}-${iidx}`}
-            className={`${textBaseNormal} ${tableWidth[iidx + 1]} py-[13px] px-[8px] items-center`}
+            className={`${textBaseNormal} ${tableWidth[iidx + 1]} py-[13px] px-[8px] items-center truncate`}
           >
             {col.filterKey === 'emailAgreement' ? (
               <CheckBox
@@ -46,7 +47,11 @@ const TableBodyRow = function ({ member, editFormOpenHandler }: Props) {
         );
       })}
       <th className={`${tableWidth[7]} py-[13px] px-[8px] relative`}>
-        <MoreButton member={member} editFormOpenHandler={editFormOpenHandler} />
+        <MoreButton
+          member={member}
+          editFormOpenHandler={editFormOpenHandler}
+          idx={idx}
+        />
       </th>
     </tr>
   );

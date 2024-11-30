@@ -13,17 +13,30 @@ import type { MemberRecord } from '@/types/type';
 interface Props {
   member: MemberRecord;
   editFormOpenHandler: (target?: MemberRecord) => void;
+  idx: number;
 }
 
-const MoreButton = function ({ member, editFormOpenHandler }: Props) {
-  const { removeMember } = useMember();
+const MoreButton = function ({ member, editFormOpenHandler, idx }: Props) {
+  const { removeMember, members, filterMap } = useMember();
   const { open, closeHandler, openHandler } = useOverlay();
+  const maxRows = Math.floor(
+    (document.documentElement.clientHeight - 97 - 100) / 58,
+  );
+  const rowsCount = members.filter(member => {
+    for (const [key, values] of filterMap.entries()) {
+      if (values.size > 0 && !values.has(member[key])) {
+        return false;
+      }
+    }
+    return true;
+  }).length;
+
   return (
     <>
       <Dim isOpen={open} onClose={closeHandler} />
       <Button onClick={openHandler} />
       <ul
-        className={`${borderRadiusButton} ${textBaseNormal} w-[185px] shadow-calendar-blur p-[4px] flex flex-col bg-recatch-text-light-solid absolute top-[110%] right-1/2 duration-200 ${open ? 'scale-100 opacity-100 z-[700]' : 'scale-90 opacity-0 pointer-events-none z-[-200]'}`}
+        className={`${borderRadiusButton} ${textBaseNormal} ${rowsCount > maxRows && idx > rowsCount - 3 ? 'bottom-[110%]' : 'top-[110%]'} inset-auto right-1/2 w-[185px] shadow-calendar-blur p-[4px] flex flex-col bg-recatch-text-light-solid absolute duration-200 ${open ? 'scale-100 opacity-100 z-[700]' : 'scale-90 opacity-0 pointer-events-none z-[-200]'}`}
       >
         <li
           className={`${textBaseNormal} w-full py-[5px] px-[12px] pb-[9px] border-b-[1px] border-b-recatch-split cursor-pointer`}

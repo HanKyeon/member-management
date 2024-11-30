@@ -28,6 +28,7 @@ const TableBody = function ({ editFormOpenHandler }: Props) {
             key={`${idx}-${member.name}`}
             member={member}
             editFormOpenHandler={editFormOpenHandler}
+            idx={idx}
           />
         ))}
     </tbody>
