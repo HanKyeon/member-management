@@ -28,5 +28,8 @@ export interface DefaultMemberRecord {
 }
 
 export interface MemberRecord extends DefaultMemberRecord {
+  /**
+   * 선택 여부
+   */
   checked?: boolean;
 }
