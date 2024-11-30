@@ -1,5 +1,6 @@
 'use client';
 
+import { DEFAULT_DATA } from '@/components/constant/value';
 import { setRecordsInLocalStorage } from '@/components/utils/storage-utils';
 import { FilterKey, FilterValue, useFilterMap } from '@/hooks/useFilterMap';
 import { MemberRecord } from '@/types/type';
@@ -25,27 +26,6 @@ type MemberAction = {
 type MemberStoreType = MemberState & MemberAction;
 
 const MemberStore = createContext<Partial<MemberStoreType>>({});
-
-const DEFAULT_DATA: MemberRecord[] = [
-  {
-    checked: false,
-    name: 'John Doe',
-    address: '서울 강남구',
-    memo: '외국인',
-    joinDate: '2024-10-02',
-    job: '개발자',
-    emailAgreement: true,
-  },
-  {
-    checked: false,
-    name: 'Foo Bar',
-    address: '서울 서초구',
-    memo: '한국인',
-    joinDate: '2024-10-01',
-    job: 'PO',
-    emailAgreement: false,
-  },
-];
 
 export const MemberProvider = function ({ children }: PropsWithChildren) {
   const isPersist = process.env.NEXT_PUBLIC_STORAGE === 'local-storage';
