@@ -12,10 +12,16 @@ export interface ModalContainerProps extends CommonModalFormProps {
   open: boolean;
 
   onSubmit: (member: MemberRecord) => void;
+  /**
+   * 수정 시 변경 할 대상
+   */
   target?: MemberRecord;
 }
 
 export interface ModalFormProps extends CommonModalFormProps {
   onSubmit: (member: MemberRecord) => void;
+  /**
+   * 수정 시 변경 할 대상
+   */
   target?: MemberRecord;
 }
