@@ -1,13 +1,7 @@
+import { DefaultMemberRecord } from '@/types/type';
 import { useState } from 'react';
 
-export type Filters = {
-  name: string;
-  address: string;
-  memo: string;
-  joinDate: string;
-  job: '개발자' | 'PO' | '디자이너';
-  emailAgreement: boolean;
-};
+export type Filters = DefaultMemberRecord;
 
 export type FilterKey = keyof Filters;
 export type FilterValue = Filters[FilterKey];
