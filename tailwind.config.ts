@@ -26,6 +26,7 @@ export default {
           'text-light-solid': '#FFFFFF',
           'text-disabled': '#00000040',
           'text-placeholder': '#00000040',
+          'text-description': '#00000073',
           text: '#000000E0',
           'item-active': '#F0F7FF',
           'item-hover': '#0000000A',
@@ -40,6 +41,11 @@ export default {
       },
       boxShadow: {
         'input-blur': '0px 0px 0px 2px rgba(74, 124, 254, 0.15)',
+        'calendar-blur': `
+          0px 9px 28px 8px rgba(0, 0, 0, 0.05),
+          0px 3px 6px -4px rgba(0, 0, 0, 0.12),
+          0px 6px 16px 0px rgba(0, 0, 0, 0.08)
+        `,
       },
     },
   },
