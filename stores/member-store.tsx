@@ -25,7 +25,7 @@ type MemberAction = {
   checkMember: (target: MemberRecord) => void;
   toggleAllMember: () => void;
   checkEmailMember: (target: MemberRecord) => void;
-  changeMemberDetail: (target: MemberRecord, value: MemberRecord) => void;
+  updateMemberData: (target: MemberRecord, value: MemberRecord) => void;
 
   addFilter: (key: FilterKey, value: FilterValue) => void;
   removeFilter: (key: FilterKey, value: FilterValue) => void;
@@ -112,7 +112,7 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
     });
   };
 
-  const changeMemberDetail = function (
+  const updateMemberData = function (
     target: MemberRecord,
     value: MemberRecord,
   ) {
@@ -149,7 +149,7 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
         checkMember,
         toggleAllMember,
         checkEmailMember,
-        changeMemberDetail,
+        updateMemberData,
         addFilter,
         removeFilter,
         toggleFilter,
