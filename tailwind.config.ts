@@ -48,6 +48,15 @@ export default {
           0px 6px 16px 0px rgba(0, 0, 0, 0.08)
         `,
       },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn 0.2s ease-in-out',
+      },
     },
   },
   plugins: [],
