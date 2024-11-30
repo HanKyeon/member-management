@@ -1,6 +1,6 @@
 'use client';
 
-import { ButtonHTMLAttributes, type PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import {
   borderRadiusButton,
   paddingSM,

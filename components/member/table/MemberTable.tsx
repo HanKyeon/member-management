@@ -1,4 +1,3 @@
-import { DefaultMemberRecord } from '@/types/type';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 

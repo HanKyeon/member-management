@@ -1,13 +1,12 @@
 import { heading5 } from '@/components/constant/style';
 import ConfirmButton from '@/components/ui/ConfirmButton';
-import Overlay from '@/components/ui/Overlay';
 
 import Plus from '@/public/icons/Plus.svg';
 
 interface Props {
   title?: string;
-  buttonText?: string;
-  buttonClick?: () => void;
+  buttonText: string;
+  buttonClick: () => void;
 }
 
 const MemberListHeader = function ({ buttonClick, buttonText, title }: Props) {
