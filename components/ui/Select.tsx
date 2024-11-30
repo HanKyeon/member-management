@@ -5,22 +5,16 @@ import { useEffect, useRef } from 'react';
 import { useOverlay } from '@/hooks/useOverlay';
 import DrowdownIcon from '@/public/icons/Dropdown.svg';
 
+import { SelectProps } from '@/types/ui-types';
 import { borderRadiusButton } from '../constant/style';
 import { DEFAULT_JOBS } from '../constant/value';
 import ContextMenu from './ContextMenu';
-
-interface Props<T = any> {
-  menus?: { desc: string; value: any }[];
-  placeholder?: string;
-  value?: T;
-  onSelect?: (data: T) => void;
-}
 
 const Select = function <T = any>({
   menus = DEFAULT_JOBS,
   onSelect,
   value,
-}: Props<T>) {
+}: SelectProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { open, closeHandler, toggleHandler } = useOverlay();
 
@@ -57,7 +51,7 @@ const Select = function <T = any>({
       <div className="flex-shrink-0 w-[16px] h-[16px] flex items-center justify-center">
         <DrowdownIcon />
       </div>
-      <ContextMenu<T>
+      <ContextMenu
         menus={menus}
         open={open}
         value={value}

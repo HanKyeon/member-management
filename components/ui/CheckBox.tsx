@@ -1,19 +1,12 @@
 import Check from '@/public/icons/Check.svg';
-
-import type { InputHTMLAttributes } from 'react';
-
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  labelId: string;
-  className?: string;
-  disabled?: boolean;
-}
+import { CheckBoxProps } from '@/types/ui-types';
 
 const CheckBox = ({
-  labelId,
+  labelId = '',
   className = '',
   disabled = false,
   ...rest
-}: Props) => {
+}: CheckBoxProps) => {
   return (
     <div
       className={`flex items-center justify-center w-[16px] h-[16px] ${className}`}

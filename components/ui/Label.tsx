@@ -1,20 +1,18 @@
+import { LabelProps } from '@/types/ui-types';
 import { textLgNormal, textLgStrong } from '../constant/style';
 
-import type { LabelHTMLAttributes } from 'react';
-
-interface Props extends LabelHTMLAttributes<HTMLLabelElement> {
-  text?: string;
-  required?: boolean;
-  className?: string;
-}
-
-const Label = function ({ required, text, className = '', ...rest }: Props) {
+const Label = function ({
+  required,
+  labelText,
+  className = '',
+  ...rest
+}: LabelProps) {
   return (
     <label
       className={`${textLgStrong} text-recatch-text-tertiary ${className}`}
       {...rest}
     >
-      {text}{' '}
+      {labelText}{' '}
       {required && (
         <span className={`${textLgNormal} text-recatch-error`}>*</span>
       )}
