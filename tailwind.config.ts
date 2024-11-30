@@ -38,6 +38,9 @@ export default {
         vh: '1vh',
         vw: '1vw',
       },
+      boxShadow: {
+        'input-blur': '0px 0px 0px 2px rgba(74, 124, 254, 0.15)',
+      },
     },
   },
   plugins: [],
