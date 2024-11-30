@@ -6,10 +6,14 @@ import { DEFAULT_COLS } from '@/components/constant/value';
 import CheckBox from '@/components/ui/CheckBox';
 import { useMember } from '@/stores/member-store';
 
-import { RowProps } from '../../../types/table-types';
+import { MemberProps } from '../../../types/table-types';
 import MoreButton from './MoreButton';
 
-const TableBodyRow = function ({ member, editFormOpenHandler, idx }: RowProps) {
+const TableBodyRow = function ({
+  member,
+  editFormOpenHandler,
+  idx,
+}: MemberProps) {
   const { checkMember, checkEmailMember } = useMember();
   return (
     <tr
