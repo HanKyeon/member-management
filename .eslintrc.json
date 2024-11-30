@@ -7,6 +7,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
+    "plugin:import/errors",
+    "plugin:import/warnings",
     "prettier",
     "next/core-web-vitals"
   ],
@@ -94,6 +96,13 @@
           "object",
           "type"
         ],
+        "pathGroups": [
+          {
+            "pattern": "@/**",
+            "group": "internal"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
