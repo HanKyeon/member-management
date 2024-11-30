@@ -1,9 +1,10 @@
 'use client';
 
-import { OverlayProps } from '@/types/ui-types';
-import { overlayClasses } from '@/utils/style-utils';
 import { type PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
+
+import type { OverlayProps } from '@/types/ui-types';
+import { overlayClasses } from '@/utils/style-utils';
 
 const Overlay = function ({
   variant = 'dim',
@@ -16,6 +17,7 @@ const Overlay = function ({
   if (!isOpen) return null;
   return createPortal(
     <div
+      role="dialog"
       className={overlayClasses[variant](isOpen, className)}
       onClick={() => {
         if (dimCloseBlock) return;

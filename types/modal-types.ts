@@ -1,4 +1,4 @@
-import { MemberRecord } from '@/types/type';
+import type { MemberRecord } from '@/types/type';
 
 export interface CommonModalFormProps {
   /**

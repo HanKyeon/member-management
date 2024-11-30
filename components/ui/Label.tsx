@@ -1,4 +1,5 @@
-import { LabelProps } from '@/types/ui-types';
+import type { LabelProps } from '@/types/ui-types';
+
 import { textLgNormal, textLgStrong } from '../constant/style';
 
 const Label = function ({

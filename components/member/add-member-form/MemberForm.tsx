@@ -10,9 +10,10 @@ import { type MemberRecord } from '@/types/type';
 import { formatDate } from '@/utils/date-utils';
 import { MemberFormResolver } from '@/utils/form-utils';
 
-import { ModalFormProps } from '../../../types/modal-types';
-import FormInput from '../../ui/hook-form-inputs/FormInput';
 import ModalFooter from './ModalFooter';
+import FormInput from '../../ui/hook-form-inputs/FormInput';
+
+import type { ModalFormProps } from '../../../types/modal-types';
 
 const ElementMap = {
   name: FormInput,

@@ -1,6 +1,7 @@
 import { textBaseStrong } from '@/components/constant/style';
 import Close from '@/public/icons/Close.svg';
-import { ModalHeaderProps } from '../../../types/modal-types';
+
+import type { ModalHeaderProps } from '../../../types/modal-types';
 
 const ModalHeader = function ({
   title = '회원 추가',

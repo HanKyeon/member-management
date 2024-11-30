@@ -1,4 +1,5 @@
-import { ContextMenuProps, MenuItemProps } from '@/types/ui-types';
+import type { ContextMenuProps, MenuItemProps } from '@/types/ui-types';
+
 import { borderRadiusLG, borderRadiusSM } from '../constant/style';
 
 export const ContextMenuItem = function ({
@@ -28,6 +29,7 @@ const ContextMenu = function ({
 }: ContextMenuProps) {
   return (
     <ul
+      role="menu"
       className={`${borderRadiusLG} flex flex-col p-[4px] bg-recatch-text-light-solid shadow-calendar-blur absolute w-[198px] top-[110%] left-0 duration-200 border-recatch-border text-recatch-text ${open ? 'scale-100 opacity-100 z-[1000]' : 'scale-90 opacity-0 pointer-events-none z-[-200]'}`}
     >
       {menus.map((menu, idx) => {

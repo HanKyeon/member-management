@@ -1,14 +1,16 @@
 'use client';
 
+
 import { textBaseStrong } from '@/components/constant/style';
 import LastMonthIcon from '@/public/icons/LastMonth.svg';
 import LastYearIcon from '@/public/icons/LastYear.svg';
 import NextMonthIcon from '@/public/icons/NextMonth.svg';
 import NextYearIcon from '@/public/icons/NextYear.svg';
 
-import { MouseEvent } from 'react';
-import { DatePickerHeaderProps } from '../../../types/datepicker-types';
 import Button from '../Button';
+
+import type { DatePickerHeaderProps } from '../../../types/datepicker-types';
+import type { MouseEvent } from 'react';
 
 const DateHeader = function ({
   currentDate,

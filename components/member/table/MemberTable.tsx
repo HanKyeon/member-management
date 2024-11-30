@@ -1,8 +1,9 @@
 'use client';
 
-import { TableProps } from '../../../types/table-types';
 import TableBody from './TableBody';
 import TableHeader from './TableHeader';
+
+import type { TableProps } from '../../../types/table-types';
 
 const MemberTable = function ({ editFormOpenHandler }: TableProps) {
   return (

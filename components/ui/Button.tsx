@@ -1,6 +1,5 @@
 import MoreIcon from '@/public/icons/MoreOutlined.svg';
-import { ButtonProps } from '@/types/ui-types';
-
+import type { ButtonProps } from '@/types/ui-types';
 import { buttonClasses } from '@/utils/style-utils';
 
 const Button = function ({

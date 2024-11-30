@@ -1,5 +1,5 @@
 import Check from '@/public/icons/Check.svg';
-import { CheckBoxProps } from '@/types/ui-types';
+import type { CheckBoxProps } from '@/types/ui-types';
 
 const CheckBox = ({
   labelId = '',

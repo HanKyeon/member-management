@@ -4,11 +4,11 @@ import { useEffect, useRef } from 'react';
 
 import { useOverlay } from '@/hooks/useOverlay';
 import DrowdownIcon from '@/public/icons/Dropdown.svg';
+import type { SelectProps } from '@/types/ui-types';
 
-import { SelectProps } from '@/types/ui-types';
+import ContextMenu from './ContextMenu';
 import { borderRadiusButton } from '../constant/style';
 import { DEFAULT_JOBS } from '../constant/value';
-import ContextMenu from './ContextMenu';
 
 const Select = function <T = any>({
   menus = DEFAULT_JOBS,
@@ -42,6 +42,7 @@ const Select = function <T = any>({
   return (
     <div
       ref={containerRef}
+      role="button"
       className={`${borderRadiusButton} relative flex flex-row items-center border-[1px] border-recatch-border text-recatch-text py-[8px] px-[12px] cursor-pointer w-full ${open ? '' : 'hover:border-recatch-primary hover:text-recatch-primary'} duration-200`}
       onClick={toggleHandler}
     >

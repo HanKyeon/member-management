@@ -5,11 +5,11 @@ import {
   textBaseNormal,
 } from '@/components/constant/style';
 import Button from '@/components/ui/Button';
-
 import Overlay from '@/components/ui/Overlay';
 import { useOverlay } from '@/hooks/useOverlay';
 import { useMember } from '@/stores/member-store';
-import { MemberProps } from '../../../types/table-types';
+
+import type { MemberProps } from '../../../types/table-types';
 
 const MoreButton = function ({
   member,

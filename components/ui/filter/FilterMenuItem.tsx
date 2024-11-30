@@ -3,8 +3,9 @@ import {
   textBaseNormal,
 } from '@/components/constant/style';
 
-import { MenuItemProps } from '../../../types/filter-types';
 import CheckBox from '../CheckBox';
+
+import type { MenuItemProps } from '../../../types/filter-types';
 
 const FilterMenuIcon = function ({
   desc,

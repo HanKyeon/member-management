@@ -10,8 +10,9 @@ import { useOverlay } from '@/hooks/useOverlay';
 import CalendarIcon from '@/public/icons/Calendar.svg';
 import { formatDate } from '@/utils/date-utils';
 
-import { DefaultDateProps } from '../../../types/datepicker-types';
 import Calendar from './Calendar';
+
+import type { DefaultDateProps } from '../../../types/datepicker-types';
 
 const DatePicker = function ({ defaultValues }: DefaultDateProps) {
   const containerRef = useRef<HTMLDivElement>(null);

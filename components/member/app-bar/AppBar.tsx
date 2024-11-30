@@ -1,8 +1,8 @@
 import { heading5 } from '@/components/constant/style';
-
 import Button from '@/components/ui/Button';
 import Plus from '@/public/icons/Plus.svg';
-import { AppBarProps } from '../../../types/appbar-types';
+
+import type { AppBarProps } from '../../../types/appbar-types';
 
 const AppBar = function ({ buttonClick, buttonText, title }: AppBarProps) {
   return (

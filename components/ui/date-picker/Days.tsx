@@ -1,7 +1,8 @@
 'use client';
 
 import { memo } from 'react';
-import { WeekDaysProps } from '../../../types/datepicker-types';
+
+import type { WeekDaysProps } from '../../../types/datepicker-types';
 
 // currentDay 변경에도 rerender를 방지하기 위한 memo
 const Days = memo(function ({ weekdays }: WeekDaysProps) {

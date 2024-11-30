@@ -3,8 +3,9 @@ import {
   textBaseNormal,
 } from '@/components/constant/style';
 
-import { CommonFilterProps } from '../../../types/filter-types';
 import FilterMenuIcon from './FilterMenuItem';
+
+import type { CommonFilterProps } from '../../../types/filter-types';
 
 export const FilterMenu = function ({
   className = '',

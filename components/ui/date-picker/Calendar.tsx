@@ -12,9 +12,10 @@ import {
   getWeekdayNames,
 } from '@/utils/date-utils';
 
-import { CalendarProps } from '../../../types/datepicker-types';
 import DateHeader from './DateHeader';
 import Days from './Days';
+
+import type { CalendarProps } from '../../../types/datepicker-types';
 
 // 내부적으로 currentDate와 selectedDate를 사용하는 이유는 재사용을 위함.
 const Calendar = ({

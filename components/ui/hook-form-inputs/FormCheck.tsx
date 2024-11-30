@@ -4,8 +4,9 @@ import { useController, useFormContext } from 'react-hook-form';
 
 import Label from '@/components/ui/Label';
 
-import { FormCommonProps } from '../../../types/hookform-type';
 import CheckBox from '../CheckBox';
+
+import type { FormCommonProps } from '../../../types/hookform-type';
 
 const FormCheckBox = function ({
   name,

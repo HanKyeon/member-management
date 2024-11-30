@@ -4,8 +4,9 @@ import { useController, useFormContext } from 'react-hook-form';
 
 import Label from '@/components/ui/Label';
 
-import { FormCommonProps } from '../../../types/hookform-type';
 import TextArea from '../TextArea';
+
+import type { FormCommonProps } from '../../../types/hookform-type';
 
 const FormTextArea = function ({
   name,

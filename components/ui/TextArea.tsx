@@ -1,4 +1,5 @@
-import { TextAreaProps } from '@/types/ui-types';
+import type { TextAreaProps } from '@/types/ui-types';
+
 import { borderRadiusLG, textBaseNormal } from '../constant/style';
 
 const TextArea = function ({

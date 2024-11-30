@@ -6,8 +6,9 @@ import { DEFAULT_COLS } from '@/components/constant/value';
 import CheckBox from '@/components/ui/CheckBox';
 import { useMember } from '@/stores/member-store';
 
-import { MemberProps } from '../../../types/table-types';
 import MoreButton from './MoreButton';
+
+import type { MemberProps } from '../../../types/table-types';
 
 const TableBodyRow = function ({
   member,

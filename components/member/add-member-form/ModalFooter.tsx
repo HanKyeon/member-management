@@ -1,6 +1,8 @@
-import Button from '@/components/ui/Button';
 import { useFormContext } from 'react-hook-form';
-import { CommonModalFormProps } from '../../../types/modal-types';
+
+import Button from '@/components/ui/Button';
+
+import type { CommonModalFormProps } from '../../../types/modal-types';
 
 const ModalFooter = function ({ cancelHandler }: CommonModalFormProps) {
   const {

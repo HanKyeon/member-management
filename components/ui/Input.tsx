@@ -1,4 +1,5 @@
-import { InputProps } from '@/types/ui-types';
+import type { InputProps } from '@/types/ui-types';
+
 import { borderRadiusButton, textBaseNormal } from '../constant/style';
 
 const Input = function ({

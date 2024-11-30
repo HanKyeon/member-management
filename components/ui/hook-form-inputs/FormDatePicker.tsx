@@ -11,9 +11,10 @@ import { useOverlay } from '@/hooks/useOverlay';
 import CalendarIcon from '@/public/icons/Calendar.svg';
 import { formatDate } from '@/utils/date-utils';
 
-import { FormDatePickerProps } from '../../../types/hookform-type';
 import Calendar from '../date-picker/Calendar';
 import Label from '../Label';
+
+import type { FormDatePickerProps } from '../../../types/hookform-type';
 
 const FormDate = function ({
   name,

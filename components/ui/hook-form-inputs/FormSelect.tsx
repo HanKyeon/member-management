@@ -8,9 +8,10 @@ import { DEFAULT_JOBS } from '@/components/constant/value';
 import { useOverlay } from '@/hooks/useOverlay';
 import DrowdownIcon from '@/public/icons/Dropdown.svg';
 
-import { FormSelectProps } from '../../../types/hookform-type';
 import ContextMenu from '../ContextMenu';
 import Label from '../Label';
+
+import type { FormSelectProps } from '../../../types/hookform-type';
 
 const FormSelect = function ({
   name,

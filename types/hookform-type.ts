@@ -1,4 +1,4 @@
-import { DefaultDateProps } from '@/types/datepicker-types';
+import type { DefaultDateProps } from '@/types/datepicker-types';
 
 export interface FormCommonProps {
   /**

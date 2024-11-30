@@ -1,9 +1,10 @@
 import { borderRadiusLG } from '@/components/constant/style';
 import Overlay from '@/components/ui/Overlay';
 
-import { ModalContainerProps } from '../../../types/modal-types';
 import MemberForm from './MemberForm';
 import ModalHeader from './ModalHeader';
+
+import type { ModalContainerProps } from '../../../types/modal-types';
 
 const MemberFormModal = function ({
   cancelHandler,
