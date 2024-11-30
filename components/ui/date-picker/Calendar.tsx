@@ -12,15 +12,9 @@ import {
   getWeekdayNames,
 } from '@/utils/date-utils';
 
+import { CalendarProps } from '../../../types/datepicker-types';
 import DateHeader from './DateHeader';
 import Days from './Days';
-
-interface Props {
-  className?: string;
-  locale?: string;
-  onItemClick?: (date: Date) => void;
-  defaultValues?: Date;
-}
 
 // 내부적으로 currentDate와 selectedDate를 사용하는 이유는 재사용을 위함.
 const Calendar = ({
@@ -28,7 +22,7 @@ const Calendar = ({
   onItemClick,
   locale = 'en-US',
   defaultValues = new Date(),
-}: Props) => {
+}: CalendarProps) => {
   const [currentDate, setCurrentDate] = useState(defaultValues);
   const [selectedDate, setSelectedDate] = useState<Date>(defaultValues);
 

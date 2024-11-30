@@ -6,24 +6,29 @@ import LastYearIcon from '@/public/icons/LastYear.svg';
 import NextMonthIcon from '@/public/icons/NextMonth.svg';
 import NextYearIcon from '@/public/icons/NextYear.svg';
 
-import IconButton from './IconButton';
+import { MouseEvent } from 'react';
+import { DatePickerHeaderProps } from '../../../types/datepicker-types';
+import Button from '../Button';
 
-interface Props {
-  currentDate: Date;
-  locale: string;
-  handleMonth: (month: number) => () => void;
-}
-
-const DateHeader = function ({ currentDate, locale, handleMonth }: Props) {
+const DateHeader = function ({
+  currentDate,
+  locale,
+  handleMonth,
+}: DatePickerHeaderProps) {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>, num: number) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleMonth(num)();
+  };
   return (
     <header className="flex items-center justify-between py-[9px] px-[8px] border-b-[1px] border-b-recatch-split">
       <div className="flex-shrink-0 gap-[4px] flex flex-row">
-        <IconButton onClick={handleMonth(-12)}>
+        <Button variant="icon" onClick={e => handleClick(e, -12)}>
           <LastYearIcon />
-        </IconButton>
-        <IconButton onClick={handleMonth(-1)}>
+        </Button>
+        <Button variant="icon" onClick={e => handleClick(e, -1)}>
           <LastMonthIcon />
-        </IconButton>
+        </Button>
       </div>
       <span className={`${textBaseStrong} font-semibold flex-1 text-center`}>
         {currentDate.toLocaleString(locale, {
@@ -32,12 +37,12 @@ const DateHeader = function ({ currentDate, locale, handleMonth }: Props) {
         })}
       </span>
       <div className="flex-shrink-0 gap-[4px] flex flex-row">
-        <IconButton onClick={handleMonth(1)}>
+        <Button variant="icon" onClick={e => handleClick(e, 1)}>
           <NextMonthIcon />
-        </IconButton>
-        <IconButton onClick={handleMonth(12)}>
+        </Button>
+        <Button variant="icon" onClick={e => handleClick(e, 12)}>
           <NextYearIcon />
-        </IconButton>
+        </Button>
       </div>
     </header>
   );
