@@ -6,3 +6,4 @@ export const textLgStrong =
   'font-semibold text-[18px] leading-[24px] text-right';
 export const textLgNormal = 'font-normal text-[18px] leading-[24px]';
 export const textBaseNormal = 'font-normal text-[14px] leading-[22px]';
+export const textBaseStrong = 'font-semibold text-sm leading-[22px]';
