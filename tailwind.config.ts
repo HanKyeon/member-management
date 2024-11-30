@@ -53,9 +53,14 @@ export default {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        scaleUp: {
+          '0%': { scale: '90%', opacity: '0' },
+          '100%': { scale: '100%', opacity: '1' },
+        },
       },
       animation: {
         fadeIn: 'fadeIn 0.2s ease-in-out',
+        scaleUp: 'scaleUp 0.2s ease-in-out',
       },
     },
   },
