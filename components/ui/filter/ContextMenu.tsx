@@ -12,7 +12,7 @@ interface Props {
 
 export const ContextMenu = function ({ className = '', menus = [] }: Props) {
   return (
-    <div
+    <ul
       className={`${borderRadiusButton} ${textBaseNormal} shadow-calendar-blur p-[8px] flex flex-col gap-[8px] w-full bg-recatch-text-light-solid ${className}`}
     >
       {menus.map((menu, idx) => {
@@ -25,6 +25,6 @@ export const ContextMenu = function ({ className = '', menus = [] }: Props) {
           />
         );
       })}
-    </div>
+    </ul>
   );
 };
