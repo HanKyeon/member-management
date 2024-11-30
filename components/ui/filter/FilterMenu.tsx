@@ -13,13 +13,13 @@ interface Props {
 export const FilterMenu = function ({ className = '', menus = [] }: Props) {
   return (
     <ul
-      className={`${borderRadiusButton} ${textBaseNormal} shadow-calendar-blur p-[8px] flex flex-col gap-[8px] w-full bg-recatch-text-light-solid ${className}`}
+      className={`${borderRadiusButton} ${textBaseNormal} shadow-calendar-blur p-[8px] flex flex-col gap-[8px] w-full bg-recatch-text-light-solid ${className} max-h-[200px] overflow-y-auto`}
     >
       {menus.map((menu, idx) => {
         return (
           <MenuItem
             key={`context-${idx}-${menu.desc}`}
-            desc={menu.desc}
+            desc={menu.desc || '없음'}
             selected={menu.checked}
             onClick={menu.onClick}
           />
