@@ -33,6 +33,7 @@ export default {
           'fill-alter': '#00000005',
           split: '#0000000F',
           icon: '#00000073',
+          'bg-active': '#F0F7FF',
         },
       },
       spacing: {
