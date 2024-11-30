@@ -8,6 +8,8 @@
     "dev:local": "cross-env NEXT_PUBLIC_STORAGE=local-storage STORAGE=local-storage next dev",
     "build": "next build",
     "start": "next start",
+    "start:in": "cross-env NEXT_PUBLIC_STORAGE=in-memory STORAGE=in-memory next start",
+    "start:local": "cross-env NEXT_PUBLIC_STORAGE=local-storage STORAGE=local-storage next start",
     "lint": "next lint",
     "format": "eslint . --fix && prettier --write ."
   },
