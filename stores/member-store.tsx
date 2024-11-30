@@ -1,3 +1,5 @@
+'use client';
+
 import { setRecordsInLocalStorage } from '@/components/utils/storage-utils';
 import { MemberRecord } from '@/types/type';
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
@@ -11,9 +13,9 @@ type MemberAction = {
   checkEmailMember: (idx: number) => void;
 };
 
-type MemberStore = MemberState & MemberAction;
+type MemberStoreType = MemberState & MemberAction;
 
-const MemberStore = createContext<Partial<MemberStore>>({});
+const MemberStore = createContext<Partial<MemberStoreType>>({});
 
 const DEFAULT_DATA: MemberRecord[] = [
   {
@@ -39,7 +41,7 @@ const DEFAULT_DATA: MemberRecord[] = [
 export const MemberProvider = function ({ children }: PropsWithChildren) {
   const isPersist = process.env.NEXT_PUBLIC_STORAGE === 'local-storage';
   const [members, setMembers] = useState<MemberRecord[]>(() => {
-    if (isPersist) {
+    if (typeof window !== 'undefined' && isPersist) {
       const storageRecords = localStorage.getItem('records');
       if (storageRecords) {
         return JSON.parse(storageRecords);
@@ -105,10 +107,10 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
   );
 };
 
-export const useMember: () => MemberStore = function () {
+export const useMember: () => MemberStoreType = function () {
   const store = useContext(MemberStore);
   if (!store) {
     throw new Error(`useMember must use with <MemberProvider>.`);
   }
-  return store as MemberStore;
+  return store as MemberStoreType;
 };
