@@ -22,7 +22,7 @@ export interface DefaultMemberRecord {
   /**
    * 이메일 수신 동의, optional
    */
-  agreeToReceiveEmail?: boolean;
+  emailAgreement?: boolean;
 }
 
 export interface MemberRecord extends DefaultMemberRecord {
