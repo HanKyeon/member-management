@@ -34,7 +34,7 @@ const DEFAULT_DATA: MemberRecord[] = [
     memo: '외국인',
     joinDate: '2024-10-02',
     job: '개발자',
-    agreeToReceiveEmail: true,
+    emailAgreement: true,
   },
   {
     checked: false,
@@ -43,7 +43,7 @@ const DEFAULT_DATA: MemberRecord[] = [
     memo: '한국인',
     joinDate: '2024-10-01',
     job: 'PO',
-    agreeToReceiveEmail: false,
+    emailAgreement: false,
   },
 ];
 
@@ -93,7 +93,7 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
     setMembers(prev => {
       const newMembers = prev.map((member, i) =>
         idx === i
-          ? { ...member, agreeToReceiveEmail: !member.agreeToReceiveEmail }
+          ? { ...member, emailAgreement: !member.emailAgreement }
           : member,
       );
       if (isPersist) {
