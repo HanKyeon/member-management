@@ -6,44 +6,53 @@ import CheckBox from '@/components/ui/ChechBox';
 import { useMember } from '@/stores/member-store';
 
 const TableBody = function () {
-  const { members, checkMember, checkEmailMember } = useMember();
+  const { members, checkMember, checkEmailMember, filterMap } = useMember();
   return (
     <tbody>
-      {members.map((member, idx) => (
-        <tr
-          className={`text-recatch-text flex flex-row w-full border-b-[1px] border-b-recatch-split`}
-          key={`${idx}`}
-        >
-          <th
-            className={`${tableWidth[0]} px-[8px] border-r-[1px] border-recatch-split py-[13px]`}
+      {members
+        .filter(member => {
+          for (const [key, values] of filterMap.entries()) {
+            if (values.size > 0 && !values.has(member[key])) {
+              return false;
+            }
+          }
+          return true;
+        })
+        .map((member, idx) => (
+          <tr
+            className={`text-recatch-text flex flex-row w-full border-b-[1px] border-b-recatch-split`}
+            key={`${idx}`}
           >
-            <CheckBox
-              checked={member.checked}
-              onChange={() => checkMember(idx)}
-            />
-          </th>
-          {DEFAULT_COLS.map((col, iidx) => {
-            return (
-              <th
-                key={`${col.name}-${col.filterKey}-${iidx}`}
-                className={`${textBaseNormal} ${tableWidth[iidx + 1]} py-[13px] px-[8px] items-center`}
-              >
-                {col.filterKey === 'emailAgreement' ? (
-                  <CheckBox
-                    checked={member.emailAgreement}
-                    onChange={() => checkEmailMember(idx)}
-                  />
-                ) : (
-                  member?.[col.filterKey]
-                )}
-              </th>
-            );
-          })}
-          <th className={`${tableWidth[7]} py-[13px] px-[8px]`}>
-            <Button />
-          </th>
-        </tr>
-      ))}
+            <th
+              className={`${tableWidth[0]} px-[8px] border-r-[1px] border-recatch-split py-[13px]`}
+            >
+              <CheckBox
+                checked={member.checked}
+                onChange={() => checkMember(idx)}
+              />
+            </th>
+            {DEFAULT_COLS.map((col, iidx) => {
+              return (
+                <th
+                  key={`${col.name}-${col.filterKey}-${iidx}`}
+                  className={`${textBaseNormal} ${tableWidth[iidx + 1]} py-[13px] px-[8px] items-center`}
+                >
+                  {col.filterKey === 'emailAgreement' ? (
+                    <CheckBox
+                      checked={member.emailAgreement}
+                      onChange={() => checkEmailMember(idx)}
+                    />
+                  ) : (
+                    member?.[col.filterKey]
+                  )}
+                </th>
+              );
+            })}
+            <th className={`${tableWidth[7]} py-[13px] px-[8px]`}>
+              <Button />
+            </th>
+          </tr>
+        ))}
     </tbody>
   );
 };
