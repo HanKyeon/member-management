@@ -1,16 +1,25 @@
 'use client';
 
 import { setRecordsInLocalStorage } from '@/components/utils/storage-utils';
+import { FilterKey, FilterValue, useFilterMap } from '@/hooks/useFilterMap';
 import { MemberRecord } from '@/types/type';
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
-type MemberState = { members: MemberRecord[] };
+type MemberState = {
+  members: MemberRecord[];
+
+  filterMap: Map<FilterKey, Set<FilterValue>>;
+};
 
 type MemberAction = {
   removeMember: (idx: number) => void;
   addMember: (member: MemberRecord) => void;
   checkMember: (idx: number) => void;
   checkEmailMember: (idx: number) => void;
+
+  addFilter: (key: FilterKey, value: FilterValue) => void;
+  removeFilter: (key: FilterKey, value: FilterValue) => void;
+  toggleFilter: (key: FilterKey, value: FilterValue) => void;
 };
 
 type MemberStoreType = MemberState & MemberAction;
@@ -50,18 +59,19 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
     }
     return DEFAULT_DATA;
   });
+  const { filterMap, addFilter, removeFilter, toggleFilter } = useFilterMap();
 
-  const removeMember = function (idx: number) {
+  const addMember = function (member: MemberRecord) {
     setMembers(prev => {
-      const newMembers = prev.filter((_, i) => i !== idx);
+      const newMembers = [...prev, member];
       setRecordsInLocalStorage(newMembers);
       return newMembers;
     });
   };
 
-  const addMember = function (member: MemberRecord) {
+  const removeMember = function (idx: number) {
     setMembers(prev => {
-      const newMembers = [...prev, member];
+      const newMembers = prev.filter((_, i) => i !== idx);
       setRecordsInLocalStorage(newMembers);
       return newMembers;
     });
@@ -92,14 +102,19 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
       return newMembers;
     });
   };
+
   return (
     <MemberStore.Provider
       value={{
-        addMember,
-        checkEmailMember,
-        checkMember,
         members,
+        filterMap,
+        addMember,
         removeMember,
+        checkMember,
+        checkEmailMember,
+        addFilter,
+        removeFilter,
+        toggleFilter,
       }}
     >
       {children}
