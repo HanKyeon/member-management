@@ -17,6 +17,8 @@ type MemberState = {
   members: MemberRecord[];
 
   filterMap: Map<FilterKey, Set<FilterValue>>;
+
+  target?: MemberRecord;
 };
 
 type MemberAction = {
@@ -25,10 +27,13 @@ type MemberAction = {
   checkMember: (target: MemberRecord) => void;
   toggleAllMember: () => void;
   checkEmailMember: (target: MemberRecord) => void;
+  changeMemberDetail: (target: MemberRecord, value: MemberRecord) => void;
 
   addFilter: (key: FilterKey, value: FilterValue) => void;
   removeFilter: (key: FilterKey, value: FilterValue) => void;
   toggleFilter: (key: FilterKey, value: FilterValue) => void;
+
+  updateTargetHandler: (data?: MemberRecord) => void;
 };
 
 type MemberStoreType = MemberState & MemberAction;
@@ -37,8 +42,13 @@ const MemberStore = createContext<Partial<MemberStoreType>>({});
 
 export const MemberProvider = function ({ children }: PropsWithChildren) {
   const isPersist = process.env.NEXT_PUBLIC_STORAGE === 'local-storage';
-  const [members, setMembers] = useState<MemberRecord[]>([]);
   const { filterMap, addFilter, removeFilter, toggleFilter } = useFilterMap();
+  const [members, setMembers] = useState<MemberRecord[]>([]);
+  const [target, setTarget] = useState<MemberRecord | undefined>();
+
+  const updateTargetHandler = function (data?: MemberRecord) {
+    setTarget(data);
+  };
 
   const addMember = function (target: MemberRecord) {
     setMembers(prev => {
@@ -92,6 +102,19 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
     });
   };
 
+  const changeMemberDetail = function (
+    target: MemberRecord,
+    value: MemberRecord,
+  ) {
+    setMembers(prev => {
+      const newMembers = prev.map(member =>
+        isEqual(target, member) ? { ...member, ...value } : member,
+      );
+      setRecordsInLocalStorage(newMembers);
+      return newMembers;
+    });
+  };
+
   useEffect(() => {
     if (typeof window !== 'undefined' && isPersist) {
       setMembers(() => {
@@ -110,14 +133,17 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
       value={{
         members,
         filterMap,
+        target,
         addMember,
         removeMember,
         checkMember,
         toggleAllMember,
         checkEmailMember,
+        changeMemberDetail,
         addFilter,
         removeFilter,
         toggleFilter,
+        updateTargetHandler,
       }}
     >
       {children}
