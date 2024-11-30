@@ -4,7 +4,13 @@ import { DEFAULT_DATA } from '@/components/constant/value';
 import { setRecordsInLocalStorage } from '@/components/utils/storage-utils';
 import { FilterKey, FilterValue, useFilterMap } from '@/hooks/useFilterMap';
 import { MemberRecord } from '@/types/type';
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 type MemberState = {
   members: MemberRecord[];
@@ -30,16 +36,7 @@ const MemberStore = createContext<Partial<MemberStoreType>>({});
 
 export const MemberProvider = function ({ children }: PropsWithChildren) {
   const isPersist = process.env.NEXT_PUBLIC_STORAGE === 'local-storage';
-  const [members, setMembers] = useState<MemberRecord[]>(() => {
-    if (typeof window !== 'undefined' && isPersist) {
-      const storageRecords = localStorage.getItem('records');
-      if (storageRecords) {
-        return JSON.parse(storageRecords);
-      }
-      setRecordsInLocalStorage(DEFAULT_DATA);
-    }
-    return DEFAULT_DATA;
-  });
+  const [members, setMembers] = useState<MemberRecord[]>([]);
   const { filterMap, addFilter, removeFilter, toggleFilter } = useFilterMap();
 
   const addMember = function (member: MemberRecord) {
@@ -87,12 +84,23 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
           ? { ...member, emailAgreement: !member.emailAgreement }
           : member,
       );
-      if (isPersist) {
-        localStorage.setItem('records', JSON.stringify(newMembers));
-      }
+      setRecordsInLocalStorage(newMembers);
       return newMembers;
     });
   };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && isPersist) {
+      setMembers(() => {
+        const storageRecords = localStorage.getItem('records');
+        if (storageRecords) {
+          return JSON.parse(storageRecords);
+        }
+        setRecordsInLocalStorage(DEFAULT_DATA);
+        return DEFAULT_DATA;
+      });
+    }
+  }, []);
 
   return (
     <MemberStore.Provider
