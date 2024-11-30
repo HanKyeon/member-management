@@ -7,7 +7,7 @@ import { MemberProvider, useMember } from '@/stores/member-store';
 import type { MemberRecord } from '@/types/type';
 
 import MemberFormModal from './add-member-form/MemberFormModal';
-import MemberListHeader from './header/MemberListHeader';
+import AppBar from './app-bar/AppBar';
 import MemberTable from './table/MemberTable';
 
 const Member = function () {
@@ -20,28 +20,22 @@ const Member = function () {
     openHandler();
   }, []);
 
+  const submitHandler = function (data: MemberRecord) {
+    target ? changeMemberDetail(target, data) : addMember(data);
+    updateTargetHandler();
+    closeHandler();
+  };
+
   return (
     <>
       <MemberFormModal
         open={open}
-        closeHandler={closeHandler}
-        onSubmit={data => {
-          if (target) {
-            changeMemberDetail(target, data);
-          } else {
-            addMember(data);
-          }
-          updateTargetHandler();
-          closeHandler();
-        }}
-        member={target}
+        cancelHandler={closeHandler}
+        onSubmit={submitHandler}
+        target={target}
       />
       <section className="w-full h-full flex flex-col flex-shrink-0">
-        <MemberListHeader
-          title="회원 목록"
-          buttonText="추가"
-          buttonClick={openHandler}
-        />
+        <AppBar title="회원 목록" buttonText="추가" buttonClick={openHandler} />
         <main className="w-full flex-1">
           <MemberTable editFormOpenHandler={editFormOpenHandler} />
         </main>
