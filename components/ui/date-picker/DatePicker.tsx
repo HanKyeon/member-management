@@ -7,36 +7,61 @@ import {
 import Calendar from './Calendar';
 
 import CalendarIcon from '@/public/icons/Calendar.svg';
-import { useRef, useState } from 'react';
-import Dim from '../Dim';
-import { formatDate } from '@/components/utils/date-utils';
+import { useEffect, useRef } from 'react';
+import { formatDate } from '@/utils/date-utils';
 import { useOverlay } from '@/hooks/useOverlay';
 
-const DatePicker = function () {
+interface Props {
+  defaultValues?: Date;
+}
+
+const DatePicker = function ({ defaultValues }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const { open, closeHandler, openHandler } = useOverlay();
+  const { open, closeHandler, toggleHandler } = useOverlay();
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        closeHandler(); // 외부 클릭 시 닫기
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [closeHandler]);
+
   return (
     <>
-      <Dim isOpen={open} onClose={closeHandler} />
       <div
         className={`${borderRadiusButton} relative flex flex-row items-center border-[1px] border-recatch-border py-[8px] px-[12px] cursor-pointer w-full hover:border-recatch-primary ${open ? 'border-recatch-primary shadow-input-blur' : ''}`}
-        onClick={openHandler}
+        onClick={toggleHandler}
+        ref={containerRef}
       >
         <input
           ref={inputRef}
           placeholder="Select date"
-          className={`${textBaseNormal} pointer-events-none placeholder-recatch-text-placeholder flex-1`}
+          className={`${textBaseNormal} pointer-events-none placeholder-recatch-text-placeholder flex-1 w-0`}
+          defaultValue={formatDate(new Date())}
         />
-        <CalendarIcon />
+        <div className="flex-shrink-0">
+          <CalendarIcon />
+        </div>
 
         <Calendar
-          className={`absolute top-[110%] left-0 duration-200 ${open ? 'scale-100 opacity-100 z-[700]' : 'scale-90 opacity-0 pointer-events-none z-[-200]'}`}
+          className={`absolute top-[110%] left-0 duration-200 ${open ? 'scale-100 opacity-100 z-[1000]' : 'scale-90 opacity-0 pointer-events-none z-[-200]'}`}
           onItemClick={date => {
             if (inputRef.current) {
               inputRef.current.value = formatDate(date);
             }
             closeHandler();
           }}
+          defaultValues={defaultValues}
         />
       </div>
     </>

@@ -8,7 +8,7 @@ import {
   getDaysInMonth,
   getWeekdayNames,
   getStartDayIndex,
-} from '@/components/utils/date-utils';
+} from '@/utils/date-utils';
 
 import {
   borderRadiusButton,
@@ -20,12 +20,18 @@ interface Props {
   className?: string;
   locale?: string;
   onItemClick?: (date: Date) => void;
+  defaultValues?: Date;
 }
 
 // 내부적으로 currentDate와 selectedDate를 사용하는 이유는 재사용을 위함.
-const Calendar = ({ className = '', onItemClick, locale = 'en-US' }: Props) => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+const Calendar = ({
+  className = '',
+  onItemClick,
+  locale = 'en-US',
+  defaultValues = new Date(),
+}: Props) => {
+  const [currentDate, setCurrentDate] = useState(defaultValues);
+  const [selectedDate, setSelectedDate] = useState<Date>(defaultValues);
 
   const today = new Date(); // 오늘 날짜
   const currentYear = currentDate.getFullYear();
@@ -61,15 +67,16 @@ const Calendar = ({ className = '', onItemClick, locale = 'en-US' }: Props) => {
   };
 
   const handleDateSelect = (day: number, isCurrent: boolean) => {
+    let selectedDate: Date;
     if (isCurrent) {
-      setSelectedDate(new Date(currentYear, currentMonth, day));
+      selectedDate = new Date(currentYear, currentMonth, day);
     } else if (day < 15) {
-      setCurrentDate(new Date(currentYear, currentMonth + 1, day));
-      setSelectedDate(new Date(currentYear, currentMonth + 1, day));
-    } else if (day >= 15) {
-      setCurrentDate(new Date(currentYear, currentMonth - 1, day));
-      setSelectedDate(new Date(currentYear, currentMonth - 1, day));
+      selectedDate = new Date(currentYear, currentMonth + 1, day);
+    } else {
+      selectedDate = new Date(currentYear, currentMonth - 1, day);
     }
+    setCurrentDate(selectedDate);
+    setSelectedDate(selectedDate);
     onItemClick?.(selectedDate);
   };
 
@@ -110,6 +117,7 @@ const Calendar = ({ className = '', onItemClick, locale = 'en-US' }: Props) => {
                   : ''
               } `}
               onClick={e => {
+                e.preventDefault();
                 e.stopPropagation();
                 handleDateSelect(day, current);
               }}
