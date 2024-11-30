@@ -1,6 +1,6 @@
 import { DEFAULT_COLS, DEFAULT_JOBS } from '@/components/constant/value';
 import { MemberRecord } from '@/types/type';
-import { createElement, PropsWithChildren } from 'react';
+import { createElement } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import FormInput from '../../ui/hook-form-inputs/FormInput';
 import FormTextArea from '@/components/ui/hook-form-inputs/FormTextArea';

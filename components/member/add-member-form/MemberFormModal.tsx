@@ -2,7 +2,6 @@ import Overlay from '@/components/ui/Overlay';
 import MemberForm from './MemberForm';
 import { borderRadiusLG } from '@/components/constant/style';
 import ModalHeader from './ModalHeader';
-import ModalFooter from './ModalFooter';
 import { MemberRecord } from '@/types/type';
 
 interface Props {

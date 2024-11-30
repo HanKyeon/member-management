@@ -6,7 +6,7 @@ import MemberTable from './table/MemberTable';
 import { MemberProvider, useMember } from '@/stores/member-store';
 
 import MemberFormModal from './add-member-form/MemberFormModal';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { MemberRecord } from '@/types/type';
 
 const Member = function () {

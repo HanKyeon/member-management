@@ -4,7 +4,6 @@ import { tableBorder, textBaseStrong } from '@/components/constant/style';
 import FilterIcon from '@/public/icons/Filter.svg';
 import { FilterMenu } from './FilterMenu';
 import { memo, useEffect, useRef } from 'react';
-import Dim from '../Dim';
 import { useOverlay } from '@/hooks/useOverlay';
 
 interface Props {
