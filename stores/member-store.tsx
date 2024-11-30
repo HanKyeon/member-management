@@ -58,7 +58,7 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
 
   const removeMember = function (target: MemberRecord) {
     setMembers(prev => {
-      const newMembers = prev.filter((member, i) => isEqual(target, member));
+      const newMembers = prev.filter((member, i) => !isEqual(target, member));
       setRecordsInLocalStorage(newMembers);
       return newMembers;
     });
@@ -114,16 +114,16 @@ export const MemberProvider = function ({ children }: PropsWithChildren) {
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && isPersist) {
-      setMembers(() => {
+    setMembers(() => {
+      if (typeof window !== 'undefined' && isPersist) {
         const storageRecords = localStorage.getItem('records');
         if (storageRecords) {
           return JSON.parse(storageRecords);
         }
         setRecordsInLocalStorage(DEFAULT_DATA);
-        return DEFAULT_DATA;
-      });
-    }
+      }
+      return DEFAULT_DATA;
+    });
   }, []);
 
   return (
