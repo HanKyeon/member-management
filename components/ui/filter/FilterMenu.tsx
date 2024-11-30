@@ -3,24 +3,23 @@ import {
   textBaseNormal,
 } from '@/components/constant/style';
 
-import MenuItem from './MenuItem';
+import { CommonFilterProps } from '../../../types/filter-types';
+import FilterMenuIcon from './FilterMenuItem';
 
-interface Props {
-  menus: { checked: boolean; desc: string; onClick: () => void }[];
-  className?: string;
-}
-
-export const FilterMenu = function ({ className = '', menus = [] }: Props) {
+export const FilterMenu = function ({
+  className = '',
+  menus = [],
+}: CommonFilterProps) {
   return (
     <ul
       className={`${borderRadiusButton} ${textBaseNormal} shadow-calendar-blur p-[8px] flex flex-col gap-[8px] w-full bg-recatch-text-light-solid ${className} max-h-[200px] overflow-y-auto`}
     >
       {menus.map((menu, idx) => {
         return (
-          <MenuItem
+          <FilterMenuIcon
             key={`context-${idx}-${menu.desc}`}
             desc={menu.desc || '없음'}
-            selected={menu.checked}
+            checked={menu.checked}
             onClick={menu.onClick}
           />
         );

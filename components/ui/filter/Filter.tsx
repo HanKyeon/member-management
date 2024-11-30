@@ -6,15 +6,10 @@ import { tableBorder, textBaseStrong } from '@/components/constant/style';
 import { useOverlay } from '@/hooks/useOverlay';
 import FilterIcon from '@/public/icons/Filter.svg';
 
+import { FilterProps } from '../../../types/filter-types';
 import { FilterMenu } from './FilterMenu';
 
-interface Props {
-  title: string;
-  className?: string;
-  menus: { checked: boolean; desc: string; onClick: () => void }[];
-}
-
-const Filter = memo(function ({ title, className, menus }: Props) {
+const Filter = memo(function ({ title, className, menus }: FilterProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { open, closeHandler, openHandler } = useOverlay();
 
