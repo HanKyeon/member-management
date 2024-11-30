@@ -10,8 +10,13 @@ export const DEFAULT_COLS: {
   { filterKey: 'name', name: '이름', required: true, className: '' },
   { filterKey: 'address', name: '주소', required: false, className: '' },
   { filterKey: 'memo', name: '메모', required: false, className: '' },
-  { filterKey: 'joinDate', name: '가입일', required: true, className: 'w-1/3' },
-  { filterKey: 'job', name: '직업', required: false, className: 'w-1/3' },
+  {
+    filterKey: 'joinDate',
+    name: '가입일',
+    required: true,
+    className: '!w-1/3',
+  },
+  { filterKey: 'job', name: '직업', required: false, className: '!w-1/3' },
   {
     filterKey: 'emailAgreement',
     name: '이메일 수신 동의',
