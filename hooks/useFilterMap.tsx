@@ -52,10 +52,8 @@ export const useFilterMap = function (
       const existingSet = updatedMap.get(key) || new Set();
       if (existingSet.has(value)) {
         existingSet.delete(value);
-        console.log('제거');
       } else {
         existingSet.add(value);
-        console.log('추가');
       }
       updatedMap.set(key, new Set([...existingSet]));
       return updatedMap;

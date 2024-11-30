@@ -37,7 +37,6 @@ const DatePicker = function () {
         <Calendar
           className={`absolute top-[110%] left-0 duration-200 ${open ? 'scale-100 opacity-100 z-[700]' : 'scale-90 opacity-0 pointer-events-none z-[-200]'}`}
           onItemClick={date => {
-            console.log(date);
             if (inputRef.current) {
               inputRef.current.value = formatDate(date);
             }
