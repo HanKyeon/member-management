@@ -3,17 +3,27 @@ import Check from '@/public/icons/Check.svg';
 import type { InputHTMLAttributes } from 'react';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  labelId: string;
   className?: string;
   disabled?: boolean;
 }
 
-const CheckBox = ({ className = '', disabled = false, ...rest }: Props) => {
+const CheckBox = ({
+  labelId,
+  className = '',
+  disabled = false,
+  ...rest
+}: Props) => {
   return (
     <div
       className={`flex items-center justify-center w-[16px] h-[16px] ${className}`}
     >
-      <label className="relative flex items-center justify-center w-full h-full cursor-pointer">
+      <label
+        id={labelId}
+        className="relative flex items-center justify-center w-full h-full cursor-pointer"
+      >
         <input
+          id={labelId}
           type="checkbox"
           className="sr-only peer"
           disabled={disabled}

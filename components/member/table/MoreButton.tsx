@@ -34,7 +34,7 @@ const MoreButton = function ({ member, editFormOpenHandler, idx }: Props) {
   return (
     <>
       <Dim isOpen={open} onClose={closeHandler} />
-      <Button onClick={openHandler} />
+      <Button type="button" onClick={openHandler} />
       <ul
         className={`${borderRadiusButton} ${textBaseNormal} ${rowsCount > maxRows && idx > rowsCount - 3 ? 'bottom-[110%]' : 'top-[110%]'} inset-auto right-1/2 w-[185px] shadow-calendar-blur p-[4px] flex flex-col bg-recatch-text-light-solid absolute duration-200 ${open ? 'scale-100 opacity-100 z-[700]' : 'scale-90 opacity-0 pointer-events-none z-[-200]'}`}
       >

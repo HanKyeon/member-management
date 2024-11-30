@@ -18,6 +18,7 @@ const TableHeader = function () {
         {/* 전체 체크박스 */}
         <th scope="col" className={`${tableWidth[0]} ${tableBorder} px-[8px]`}>
           <CheckBox
+            labelId="toggle-all-member"
             checked={
               !!members.length && !members.find(member => !member.checked)
             }

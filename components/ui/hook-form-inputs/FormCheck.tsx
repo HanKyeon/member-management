@@ -26,7 +26,11 @@ const FormCheckBox = function ({
   return (
     <div className={`w-full flex flex-col items-start gap-[8px] ${className}`}>
       <Label text={label} required={required} className="block" />
-      <CheckBox placeholder={placeholder} {...field} />
+      <CheckBox
+        labelId={`${name}-check`}
+        placeholder={placeholder}
+        {...field}
+      />
     </div>
   );
 };
