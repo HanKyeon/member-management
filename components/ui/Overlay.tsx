@@ -1,23 +1,24 @@
 'use client';
 
+import { OverlayProps } from '@/types/ui-types';
+import { oberlayClasses } from '@/utils/style-utils';
 import { type PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 
-interface Props {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
 const Overlay = function ({
+  variant = 'dim',
+  className = '',
   isOpen,
   onClose,
+  dimCloseBlock,
   children,
-}: PropsWithChildren<Props>) {
+}: PropsWithChildren<OverlayProps>) {
   if (!isOpen) return null;
   return createPortal(
     <div
-      className={`w-full h-full flex items-center justify-center absolute top-0 left-0 right-0 bottom-0 duration-200 animate-fadeIn bg-black bg-opacity-50 ${isOpen ? 'visible z-[200]' : 'z-[-2]'}`}
+      className={oberlayClasses[variant](isOpen, className)}
       onClick={() => {
+        if (dimCloseBlock) return;
         onClose();
       }}
     >
