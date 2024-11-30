@@ -31,7 +31,6 @@ const Member = function () {
           } else {
             addMember(data);
           }
-          console.log(data);
           updateTargetHandler();
           closeHandler();
         }}
