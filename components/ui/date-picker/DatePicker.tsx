@@ -10,16 +10,11 @@ import CalendarIcon from '@/public/icons/Calendar.svg';
 import { useRef, useState } from 'react';
 import Dim from '../Dim';
 import { formatDate } from '@/components/utils/date-utils';
+import { useOverlay } from '@/hooks/useOverlay';
 
 const DatePicker = function () {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [open, setOpen] = useState(false);
-  const openHandler = function () {
-    setOpen(true);
-  };
-  const closeHandler = function () {
-    setOpen(false);
-  };
+  const { open, closeHandler, openHandler } = useOverlay();
   return (
     <>
       <Dim isOpen={open} onClose={closeHandler} />

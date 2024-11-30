@@ -6,6 +6,7 @@ import { ContextMenu } from './ContextMenu';
 import { memo, useState } from 'react';
 import Dim from '../Dim';
 import { FilterKey, Filters, FilterValue } from '@/hooks/useFilterMap';
+import { useOverlay } from '@/hooks/useOverlay';
 
 interface Props {
   title: string;
@@ -14,13 +15,7 @@ interface Props {
 }
 
 const Filter = memo(function ({ title, className, menus }: Props) {
-  const [open, setOpen] = useState(false);
-  const openHandler = function () {
-    setOpen(true);
-  };
-  const closeHandler = function () {
-    setOpen(false);
-  };
+  const { open, closeHandler, openHandler } = useOverlay();
   return (
     <>
       <Dim isOpen={open} onClose={closeHandler} />
