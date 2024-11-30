@@ -8,10 +8,13 @@ import FormDate from '@/components/ui/hook-form-inputs/FormDatePicker';
 import FormSelect from '@/components/ui/hook-form-inputs/FormSelect';
 import { formatDate } from '@/utils/date-utils';
 import FormCheckBox from '@/components/ui/hook-form-inputs/FormCheck';
+import { MemberFormResolver } from '@/utils/form-utils';
+import ModalFooter from './ModalFooter';
 
 interface Props {
   onSubmit: (member: MemberRecord) => void;
   member?: MemberRecord;
+  cancelHandler: () => void;
 }
 
 const ElementMap = {
@@ -26,11 +29,7 @@ const ElementMap = {
 /**
  * @param {React.ReactNode} children footer로 사용됩니다.
  */
-const MemberForm = function ({
-  children,
-  onSubmit,
-  member,
-}: PropsWithChildren<Props>) {
+const MemberForm = function ({ onSubmit, member, cancelHandler }: Props) {
   const methods = useForm<MemberRecord>({
     defaultValues: {
       checked: member?.checked ?? false,
@@ -41,6 +40,7 @@ const MemberForm = function ({
       job: member?.job ?? DEFAULT_JOBS[0].value,
       emailAgreement: member?.emailAgreement ?? false,
     },
+    resolver: MemberFormResolver,
   });
   const { handleSubmit } = methods;
   return (
@@ -57,7 +57,7 @@ const MemberForm = function ({
             });
           })}
         </main>
-        {children}
+        <ModalFooter cancelHandler={cancelHandler} />
       </form>
     </FormProvider>
   );

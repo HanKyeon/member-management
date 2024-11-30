@@ -23,10 +23,12 @@ const MemberFormModal = function ({
       <main
         className={`${borderRadiusLG} w-[520px] bg-recatch-text-light-solid`}
       >
-        <ModalHeader closeHandler={closeHandler} />
-        <MemberForm onSubmit={onSubmit} member={member}>
-          <ModalFooter cancelHandler={closeHandler} />
-        </MemberForm>
+        <ModalHeader closeHandler={closeHandler} isEdit={!!member} />
+        <MemberForm
+          onSubmit={onSubmit}
+          member={member}
+          cancelHandler={closeHandler}
+        />
       </main>
     </Overlay>
   );
