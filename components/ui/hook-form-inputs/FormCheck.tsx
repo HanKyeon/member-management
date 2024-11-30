@@ -4,15 +4,8 @@ import { useController, useFormContext } from 'react-hook-form';
 
 import Label from '@/components/ui/Label';
 
-import CheckBox from '../ChechBox';
-
-interface Props {
-  label: string;
-  name: string;
-  required?: boolean;
-  placeholder?: string;
-  className?: string;
-}
+import { FormCommonProps } from '../../../types/hookform-type';
+import CheckBox from '../CheckBox';
 
 const FormCheckBox = function ({
   name,
@@ -20,12 +13,12 @@ const FormCheckBox = function ({
   required,
   placeholder = 'Input',
   className = '',
-}: Props) {
+}: FormCommonProps) {
   const { control } = useFormContext();
   const { field } = useController({ control, name });
   return (
     <div className={`w-full flex flex-col items-start gap-[8px] ${className}`}>
-      <Label text={label} required={required} className="block" />
+      <Label labelText={label} required={required} className="block" />
       <CheckBox
         labelId={`${name}-check`}
         placeholder={placeholder}

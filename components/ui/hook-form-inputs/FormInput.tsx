@@ -4,14 +4,7 @@ import { useController, useFormContext } from 'react-hook-form';
 
 import Input from '@/components/ui/Input';
 import Label from '@/components/ui/Label';
-
-interface Props {
-  label: string;
-  name: string;
-  required?: boolean;
-  placeholder?: string;
-  className?: string;
-}
+import { FormCommonProps } from '../../../types/hookform-type';
 
 const FormInput = function ({
   name,
@@ -19,12 +12,12 @@ const FormInput = function ({
   required,
   placeholder = 'Input',
   className = '',
-}: Props) {
+}: FormCommonProps) {
   const { control } = useFormContext();
   const { field } = useController({ control, name });
   return (
     <div className={`w-full flex flex-col items-start gap-[8px] ${className}`}>
-      <Label text={label} required={required} className="block" />
+      <Label labelText={label} required={required} className="block" />
       <Input className="w-full" placeholder={placeholder} {...field} />
     </div>
   );

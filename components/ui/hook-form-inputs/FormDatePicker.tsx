@@ -11,16 +11,9 @@ import { useOverlay } from '@/hooks/useOverlay';
 import CalendarIcon from '@/public/icons/Calendar.svg';
 import { formatDate } from '@/utils/date-utils';
 
+import { FormDatePickerProps } from '../../../types/hookform-type';
 import Calendar from '../date-picker/Calendar';
 import Label from '../Label';
-
-interface Props {
-  defaultValues?: Date;
-  name: string;
-  label: string;
-  required?: boolean;
-  className?: string;
-}
 
 const FormDate = function ({
   name,
@@ -28,18 +21,18 @@ const FormDate = function ({
   required,
   defaultValues,
   className = '',
-}: Props) {
+}: FormDatePickerProps) {
   const { control } = useFormContext();
   const { field } = useController({ control, name });
   return (
     <div className={`w-full flex flex-col items-start gap-[8px] ${className}`}>
-      <Label text={label} required={required} className="block" />
+      <Label labelText={label} required={required} className="block" />
       <FormDatePicker label={label} name={name} defaultValues={defaultValues} />
     </div>
   );
 };
 
-const FormDatePicker = function ({ defaultValues, name }: Props) {
+const FormDatePicker = function ({ defaultValues, name }: FormDatePickerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { open, closeHandler, toggleHandler } = useOverlay();
 

@@ -8,17 +8,9 @@ import { DEFAULT_JOBS } from '@/components/constant/value';
 import { useOverlay } from '@/hooks/useOverlay';
 import DrowdownIcon from '@/public/icons/Dropdown.svg';
 
+import { FormSelectProps } from '../../../types/hookform-type';
 import ContextMenu from '../ContextMenu';
 import Label from '../Label';
-
-interface Props<T = any> {
-  menus?: { desc: string; value: any }[];
-  onSelect?: (data: T) => void;
-  name: string;
-  className?: string;
-  label: string;
-  required?: boolean;
-}
 
 const FormSelect = function ({
   name,
@@ -26,27 +18,27 @@ const FormSelect = function ({
   required,
   className = '',
   menus,
-}: Props) {
+}: FormSelectProps) {
   return (
     <div className={`w-full flex flex-col items-start gap-[8px] ${className}`}>
-      <Label text={label} required={required} className="block" />
+      <Label labelText={label} required={required} className="block" />
       <Select label={label} name={name} menus={menus} />
     </div>
   );
 };
 
-const Select = function <T = any>({
+const Select = function ({
   menus = DEFAULT_JOBS,
   name,
   className = '',
-}: Props<T>) {
+}: FormSelectProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { open, closeHandler, toggleHandler } = useOverlay();
 
   const { setValue, control } = useFormContext();
   const { field } = useController({ control, name });
 
-  const selectHandler = function (data: T) {
+  const selectHandler = function (data: any) {
     setValue(name, data);
     closeHandler();
   };
@@ -79,7 +71,7 @@ const Select = function <T = any>({
       <div className="flex-shrink-0 w-[16px] h-[16px] flex items-center justify-center">
         <DrowdownIcon />
       </div>
-      <ContextMenu<T>
+      <ContextMenu
         menus={menus}
         open={open}
         value={field.value}
