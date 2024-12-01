@@ -30,6 +30,11 @@ const Member = function () {
     closeHandler();
   };
 
+  const cancelHandler = function () {
+    updateTargetHandler();
+    closeHandler();
+  };
+
   return (
     <>
       {/* main component */}
@@ -41,7 +46,7 @@ const Member = function () {
       {/* modal component */}
       <MemberFormModal
         open={open}
-        cancelHandler={closeHandler}
+        cancelHandler={cancelHandler}
         onSubmit={submitHandler}
         target={target}
       />
