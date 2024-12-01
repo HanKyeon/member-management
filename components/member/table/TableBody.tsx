@@ -13,7 +13,7 @@ const TableBody = function ({ editFormOpenHandler }: Props) {
   const { members, filterMap } = useMember();
 
   return (
-    <tbody data-testId="table-body">
+    <tbody data-testid="table-body">
       {members
         .filter(member => {
           for (const [key, values] of filterMap.entries()) {

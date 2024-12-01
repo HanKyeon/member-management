@@ -13,7 +13,7 @@ const TableHeader = function () {
   const { filterMap, members, addFilter, removeFilter, toggleAllMember } =
     useMember();
   return (
-    <thead data-testId="table-head">
+    <thead data-testid="table-head">
       <tr className={`flex flex-row w-full`}>
         {/* 전체 체크박스 */}
         <th scope="col" className={`${tableWidth[0]} ${tableBorder} px-[8px]`}>
@@ -54,7 +54,7 @@ const TableHeader = function () {
               key={`th-${idx}`}
               scope="col"
               className={`${tableWidth[idx + 1]}`}
-              data-testId={`${col.filterKey}`}
+              data-testid={`${col.filterKey}`}
             >
               <Filter title={col.name} menus={menus} />
             </th>
