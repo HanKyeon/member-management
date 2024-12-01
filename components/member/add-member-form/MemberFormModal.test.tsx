@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import MemberFormModal from './MemberFormModal';
 
 jest.mock('../path-to-svg/Close.svg', () => ({

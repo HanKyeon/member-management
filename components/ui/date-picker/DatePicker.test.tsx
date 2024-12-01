@@ -1,6 +1,7 @@
 // DatePicker.test.tsx
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import DatePicker from './DatePicker';
 
 jest.mock('../path-to-svg/LastMonth.svg', () => ({

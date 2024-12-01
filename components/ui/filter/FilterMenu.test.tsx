@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import { FilterMenu } from './FilterMenu';
 
 jest.mock('../path-to-svg/Check.svg', () => ({

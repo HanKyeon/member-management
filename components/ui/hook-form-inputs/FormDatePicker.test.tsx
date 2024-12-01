@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { FormProvider, useForm } from 'react-hook-form';
+
 import FormDate from './FormDatePicker';
 
 jest.mock('../path-to-svg/Check.svg', () => ({

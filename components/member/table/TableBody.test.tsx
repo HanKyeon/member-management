@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+
 import TableBody from './TableBody';
 
 jest.mock('../path-to-svg/Check.svg', () => ({

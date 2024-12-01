@@ -10,8 +10,8 @@ import { type MemberRecord } from '@/types/type';
 import { formatDate } from '@/utils/date-utils';
 import { MemberFormResolver } from '@/utils/form-utils';
 
-import ModalFooter from './ModalFooter';
 import FormInput from '../../ui/hook-form-inputs/FormInput';
+import ModalFooter from './ModalFooter';
 
 import type { ModalFormProps } from '../../../types/modal-types';
 

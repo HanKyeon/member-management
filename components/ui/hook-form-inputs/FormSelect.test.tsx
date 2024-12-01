@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FormProvider, useForm } from 'react-hook-form';
+
 import FormSelect from './FormSelect';
 
 jest.mock('../path-to-svg/Check.svg', () => ({
