@@ -62,6 +62,7 @@ const Select = function ({
 
   return (
     <div
+      role="button"
       ref={containerRef}
       className={`${borderRadiusButton} relative flex flex-row items-center border-[1px] border-recatch-border text-recatch-text py-[8px] px-[12px] cursor-pointer w-full ${open ? '' : 'hover:border-recatch-primary hover:text-recatch-primary'} duration-200`}
       onClick={toggleHandler}
