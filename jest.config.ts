@@ -11,6 +11,7 @@ const customJestConfig = {
     '^.+\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     '^@/components/(.*)$': '<rootDir>/components/$1',
     '^@/utils/(.*)$': '<rootDir>/utils/$1',
+    '^@/stores/(.*)$': '<rootDir>/stores/$1',
     '\\.svg$': '<rootDir>/__mocks__/svgMock.tsx',
   },
   transform: {

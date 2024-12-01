@@ -21,7 +21,11 @@ const Member = function () {
   }, []);
 
   const submitHandler = function (data: MemberRecord) {
-    target ? updateMemberData(target, data) : addMember(data);
+    if (target) {
+      updateMemberData(target, data);
+    } else {
+      addMember(data);
+    }
     updateTargetHandler();
     closeHandler();
   };
