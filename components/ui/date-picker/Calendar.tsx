@@ -77,6 +77,7 @@ const Calendar = ({
   return (
     <section
       className={`${borderRadiusButton} w-[311px] shadow-calendar-blur bg-recatch-text-light-solid ${className}`}
+      data-testid="calendar-section"
     >
       <DateHeader
         currentDate={currentDate}
