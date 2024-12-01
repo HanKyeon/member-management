@@ -10,7 +10,7 @@ const Label = function ({
 }: LabelProps) {
   return (
     <label
-      data-testId={`${labelText}`}
+      data-testid={`${labelText}`}
       className={`${textLgStrong} text-recatch-text-tertiary ${className}`}
       {...rest}
     >
